@@ -62,7 +62,7 @@ def results():
 
 
 
-@app.route('/Home_page', methods= ['POST'])
+@app.route('/Home_page')
 def Home_page():
     return insertDB.home()
 

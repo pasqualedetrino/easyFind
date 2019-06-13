@@ -66,19 +66,34 @@ def results():
 def Home_page():
     return insertDB.home()
 
+# ---------------------------------------------------------------------------------------------------
 
 from flask_restplus import Api, Resource
 import ApiUser
 api = Api()
 api.init_app(app)
 
-@api.route('/prodottoCitta/<citta>/<nomeProdotto>')
+@api.route('/api/prodottoCitta/<citta>/<nomeProdotto>')
 class prodottoCitta(Resource):
     def get(self, citta, nomeProdotto):
         return ApiUser.ProdottoComune(citta, nomeProdotto)
 
-
-@api.route('/prodottoCoordinate/<nomeProdotto>/<lat>/<long>/<raggio>')
+@api.route('/api/prodottoCoordinate/<nomeProdotto>/<lat>/<long>/<raggio>')
 class prodottoCoordinate(Resource):
     def get(self, nomeProdotto, lat, long, raggio):
         return ApiUser.ProdottoComunePosizione(nomeProdotto, lat, long, raggio)
+
+@api.route('/api/prodottoCoordinatePrezzo/<nomeProdotto>/<lat>/<long>/<raggio>')
+class prodottoCoordinate(Resource):
+    def get(self, nomeProdotto, lat, long, raggio):
+        return ApiUser.ProdottoComunePosizionePrezzo(nomeProdotto, lat, long, raggio)
+
+@api.route('/api/categorie')
+class categorie(Resource):
+    def get(self):
+        return ApiUser.CategoriePresenti()
+
+@api.route('/api/prodotticategoria/<categoria>')
+class prodotticategoria(Resource):
+    def get(self, categoria):
+        return ApiUser.ProdottiCategoria(categoria)

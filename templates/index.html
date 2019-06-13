@@ -117,6 +117,25 @@
                                      "                    </div>\n"
                                  document.getElementById("errore").innerHTML = html;
                              }
+                            else
+                            {
+                                 if (item === 'no_access')
+                             {
+                                 html = "                    <div class=\"row_mio\" style = \"margin-top: 30px\">\n" +
+                                     "                        <div class=\"col-smio-8 text\" style = \"background: red !important;\">\n" +
+                                     "                            <div style=\"display: flex;align-items: flex-start;justify-content: center; \">\n" +
+                                     "                                <h1><strong>Errore: Accedi prima di visitare la Home pageù1</strong></h1>\n" +
+                                     "                            </div>\n" +
+                                     "                            <div>\n" +
+                                     "                            \t<p>\n" +
+                                     "                                Per visitare la Home page viene richiesto di accedere o registrare un account" +
+                                     "                            \t</p>\n" +
+                                     "                            </div>\n" +
+                                     "                        </div>\n" +
+                                     "                    </div>\n"
+                                 document.getElementById("errore").innerHTML = html;
+                             }
+                            }
                          }
                         </script>
 

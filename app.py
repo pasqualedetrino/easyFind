@@ -1,4 +1,4 @@
-from flask import Flask , render_template, sessions
+from flask import Flask , render_template, redirect
 from flask import request
 from flask_dropzone import Dropzone
 from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
@@ -59,9 +59,12 @@ def results():
     return render_template('results.html')
 
 
-@app.route('/showHome')
-def showHome():
+
+
+@app.route('/Home_page', methods= ['POST'])
+def Home_page():
     return insertDB.home()
+
 
 from flask_restplus import Api, Resource
 import ApiUser

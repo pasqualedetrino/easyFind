@@ -1,5 +1,8 @@
 import sqlalchemy as db
-from flask import render_template
+from flask import render_template , redirect
+
+accesso = False
+
 
 def home():
     engine = db.create_engine('sqlite:///easyFindDB.db')
@@ -25,15 +28,14 @@ def insert(nome, password, citta, lat, long):
     connection = engine.connect()
     metadata = db.MetaData()
     emp = db.Table('venditore', metadata, autoload=True, autoload_with=engine)
-    query = db.select([emp.columns.nome]).where(emp.columns.nome == nome)
+    query = db.select([emp.columns.nome]).where(emp.columns.nome == nome.upper())
     ResultProxy = connection.execute(query)
     ResultSet = ResultProxy.fetchall()
     if (len(ResultSet) > 0):
-        if (ResultSet[0][0] == nome):
-            return render_template('index.html', error={'value': 'error_register'})
-    query2 = db.insert(emp).values(nome=nome, password=password, citta=citta, lat=lat, long=long)
+        return render_template('index.html', error={'value': 'error_register'})
+    query2 = db.insert(emp).values(nome=nome.upper(), password=password, citta=citta.upper(), lat=lat, long=long)
     connection.execute(query2)
-    return home()
+    return redirect("/Home_page")
 
 
 def access(nome, password):
@@ -41,9 +43,11 @@ def access(nome, password):
     connection = engine.connect()
     metadata = db.MetaData()
     emp = db.Table('venditore', metadata, autoload=True, autoload_with=engine)
-    query = db.select([emp.columns.nome]).where(db.and_(emp.columns.nome == nome, emp.columns.password == password))
+    query = db.select([emp.columns.nome]).where(db.and_(emp.columns.nome == nome.upper(), emp.columns.password == password))
     ResultProxy = connection.execute(query)
     ResultSet = ResultProxy.fetchall()
     if (len(ResultSet) == 1):
-        return home()
+        global accesso
+        accesso = True
+        return redirect("/Home_page")
     return render_template('index.html', error={'value': 'error_login'})

@@ -3,3 +3,4 @@ sqlalchemy
 geopy
 flask-uploads
 flask-dropzone
+pygeocoder

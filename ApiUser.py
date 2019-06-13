@@ -44,7 +44,10 @@ def ProdottoComunePosizione(nomeProdotto, lat, long, raggio):
 
     for var in result:
         negozio = (var[3], var[4])
-        if geodesic(posCliente, negozio).kilometers <= raggio:
-            list.append(var)
+
+        dist = geodesic(posCliente, negozio).kilometers
+
+        if dist < int(raggio):
+            print(dist)
 
     return json.dumps([dict(r) for r in list])

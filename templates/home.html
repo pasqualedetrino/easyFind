@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Easy Find - Aggiungi prodotti</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="/static/assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/assets/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/assets/css/form-elements.css">
+        <link rel="stylesheet" href="/static/assets/css/style.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="/static/assets/ico/mstile-144x144.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/static/assets/ico/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/static/assets/ico/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/static/assets/ico/favicon-16x16.png">
+        <link rel="manifest" href="/static/assets/ico/site.webmanifest">
+        <link rel="mask-icon" href="/static/assets/ico/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#2b5797">
+        <meta name="theme-color" content="#ffffff">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/assets/ico/mstile-144x144.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/assets/ico/mstile-144x144.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/assets/ico/mstile-70x70.png">
+        <link rel="apple-touch-icon-precomposed" href="/static/assets/ico/mstile-144x144.png">
+ {{ dropzone.load() }}
+    {{ dropzone.style('border: 2px dashed #0087F7; margin: 10%; min-height: 400px;') }}
+    </head>
+
+    <body>
+
+        <!-- Top content -->
+        <div class="top-content">
+
+            <div class="inner-bg">
+                <div class="container">
+
+                    <div class="row_mio">
+                        <div class="col-smio-8 text">
+                            <div style="display: flex;align-items: flex-start;justify-content: center;">
+                                <img src="static/assets/img/icona.svg" width="50px" style="margin-top: 9px">
+                                <h1><strong>Easy Find</strong></h1>
+                            </div>
+                            <div>
+                            	<p>
+                                    Le tue esigenze nei tuoi dintorni
+                            	</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-sm-5">
+
+                        	<div class="form-box">
+	                        	<div class="form-top">
+	                        		<div class="form-top-left">
+	                        			<h3>PRODOTTI GIA ESISTENTI</h3>
+	                        		</div>
+	                            </div>
+	                            <div class="form-bottom" >
+                                    <div style="display: flex;align-items: flex-start;justify-content: center;">
+                                        <div>
+                                            <button>Prodotto1</button>
+                                        </div>
+                                        <div >
+                                            <input type="number" placeholder="Quantit&agrave;">
+                                            <button>Invia</button>
+
+                                        </div>
+                                    </div>
+                                    <br>
+
+                                    <div style="display: flex;align-items: flex-start;justify-content: center;">
+                                        <div>
+                                            <button>Prodotto2</button>
+                                        </div>
+                                        <div >
+                                            <input type="number" placeholder="Quantit&agrave;">
+                                            <button>Invia</button>
+
+                                        </div>
+                                    </div>
+			                    </div>
+		                    </div>
+
+                        </div>
+
+
+                        <div class="col-sm-1 middle-border"></div>
+                        <div class="col-sm-1"></div>
+
+                        <div class="col-sm-5">
+
+                        	<div class="form-box">
+                        		<div class="form-top">
+	                        		<div class="form-top-left">
+	                        			<h3>REGISTRA PRODOTTO</h3>
+	                        		</div>
+	                            </div>
+                              {{ dropzone.create(action_view='showHome') }}
+
+
+                        	</div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <!-- Footer -->
+        <footer>
+        	<div class="container">
+        		<div class="row">
+
+        			<div class="col-sm-8 col-sm-offset-2">
+        				<div class="footer-border"></div>
+        				<p>Made by Bevilacqua - De trino <a href="#" target="_blank"><strong>Easy Find</strong></a>
+        					Le tue esigenze nei tuoi dintorni. <i class="fa fa-smile-o"></i></p>
+        			</div>
+
+        		</div>
+        	</div>
+        </footer>
+        <!-- Javascript -->
+        <script src="/static/assets/js/jquery-1.11.1.min.js"></script>
+        <script src="/static/assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/static/assets/js/jquery.backstretch.min.js"></script>
+        <script src="/static/assets/js/scripts.js"></script>
+
+        <!--[if lt IE 10]>
+            <script src="/static/assets/js/placeholder.js"></script>
+        <![endif]-->
+
+    </body>
+
+</html>

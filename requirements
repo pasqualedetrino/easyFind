@@ -1,0 +1,5 @@
+flask-restplus==1.1.1
+sqlalchemy
+geopy
+flask-uploads
+flask-dropzone

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Easy Find</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="/static/assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/assets/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/assets/css/form-elements.css">
+        <link rel="stylesheet" href="/static/assets/css/style.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="/static/assets/ico/mstile-144x144.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/static/assets/ico/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/static/assets/ico/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/static/assets/ico/favicon-16x16.png">
+        <link rel="manifest" href="/static/assets/ico/site.webmanifest">
+        <link rel="mask-icon" href="/static/assets/ico/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#2b5797">
+        <meta name="theme-color" content="#ffffff">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/assets/ico/mstile-144x144.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/assets/ico/mstile-144x144.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/assets/ico/mstile-70x70.png">
+        <link rel="apple-touch-icon-precomposed" href="/static/assets/ico/mstile-144x144.png">
+
+
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+              integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+              crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+                integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+                crossorigin=""></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+
+        <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- Top content -->
+        <div class="top-content">
+
+            <div class="inner-bg">
+                <div class="container">
+
+                    <div class="row_mio">
+                        <div class="col-smio-8 text">
+                            <div style="display: flex;align-items: flex-start;justify-content: center;">
+                                <img src="static/assets/img/icona.svg" width="50px" style="margin-top: 9px">
+                                <h1><strong>Easy Find</strong></h1>
+                            </div>
+                            <div>
+                            	<p>
+                                    Le tue esigenze nei tuoi dintorni
+                            	</p>
+                            </div>
+                        </div>
+                    </div>
+                        <div id="errore"></div>
+                        <script type="text/javascript">
+                         var err_log = {{ error|tojson }}   //questo è importante per ricavare i dati da python!
+                         console.log(err_log);
+                        var item = err_log.value
+                         if (item === 'error_login')
+                         {
+                             html = "                    <div class=\"row_mio\" style = \"margin-top: 30px\">\n" +
+                                 "                        <div class=\"col-smio-8 text\" style = \"background: red !important;\">\n" +
+                                 "                            <div style=\"display: flex;align-items: flex-start;justify-content: center; \">\n" +
+                                 "                                <h1><strong>Errore: Login non riuscito!</strong></h1>\n" +
+                                 "                            </div>\n" +
+                                 "                            <div>\n" +
+                                 "                            \t<p>\n" +
+                                 "                                    L'account richiesto non esiste, assicurati di aver inserito i dati giusti.<br>Oppure crea un nuovo account con le medesime credenziali\n" +
+                                 "                            \t</p>\n" +
+                                 "                            </div>\n" +
+                                 "                        </div>\n" +
+                                 "                    </div>\n"
+                             document.getElementById("errore").innerHTML = html;
+                         }
+                         else
+                         {
+                            if (item === 'error_register')
+                             {
+                                 html = "                    <div class=\"row_mio\" style = \"margin-top: 30px\">\n" +
+                                     "                        <div class=\"col-smio-8 text\" style = \"background: red !important;\">\n" +
+                                     "                            <div style=\"display: flex;align-items: flex-start;justify-content: center; \">\n" +
+                                     "                                <h1><strong>Errore: Registrazione non riuscita!</strong></h1>\n" +
+                                     "                            </div>\n" +
+                                     "                            <div>\n" +
+                                     "                            \t<p>\n" +
+                                     "                                    Il nome dell'account &egrave; gi&agrave; esistente, si consiglia di inserire un altro nome.<br>Se si &egrave; gi&agrave; in possesso di un account, accedere con le medesime credenziali\n" +
+                                     "                            \t</p>\n" +
+                                     "                            </div>\n" +
+                                     "                        </div>\n" +
+                                     "                    </div>\n"
+                                 document.getElementById("errore").innerHTML = html;
+                             }
+                         }
+                        </script>
+
+                    <div class="row">
+                        <div class="col-sm-5">
+
+                        	<div class="form-box">
+	                        	<div class="form-top">
+	                        		<div class="form-top-left">
+	                        			<h3>Accedi alla piattaforma</h3>
+	                            		<p>Inserisci il nome e la password per accedere</p>
+	                        		</div>
+	                        		<div class="form-top-right">
+	                        			<i class="fa fa-lock"></i>
+	                        		</div>
+	                            </div>
+	                            <div class="form-bottom">
+				                    <form role="form" action="http://127.0.0.1:5000/signIn" method="post" class="login-form">
+				                    	<div class="form-group">
+				                    		<label class="sr-only" for="form-username">Username</label>
+				                        	<input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username" required>
+				                        </div>
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="form-password">Password</label>
+				                        	<input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password" required>
+				                        </div>
+				                        <button type="submit" class="btn">Accedi!</button>
+				                    </form>
+			                    </div>
+		                    </div>
+
+                        </div>
+
+
+                        <div class="col-sm-1 middle-border"></div>
+                        <div class="col-sm-1"></div>
+
+                        <div class="col-sm-5">
+
+                        	<div class="form-box">
+                        		<div class="form-top">
+	                        		<div class="form-top-left">
+	                        			<h3>Registrati adesso</h3>
+	                            		<p>Compila i campi richiesti per accedere subito alla piattaforma</p>
+	                        		</div>
+	                        		<div class="form-top-right">
+	                        			<i class="fa fa-pencil"></i>
+	                        		</div>
+	                            </div>
+	                            <div class="form-bottom">
+				                    <form role="form" action="http://127.0.0.1:5000/signUp" method="post" class="registration-form">
+				                    	<div class="form-group">
+				                    		<label class="sr-only" for="form-first-name">Nome</label>
+				                        	<input type="text" name="nome" placeholder="Nome..." class="form-control" id="nome" required>
+				                        </div>
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="password">Password</label>
+				                        	<input type="password" name="password" placeholder="Password..." class="form-control" id="password" required>
+				                        </div>
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="citta">Citt&agrave;</label>
+				                        	<input type="text" name="citta" placeholder="Citt&agrave;..." class="form-control" id="Citta" required>
+				                        </div>
+				                        <div class="form-group" id="latD">
+				                        	<label class="sr-only" for="form-about-yourself">Latitudine</label>
+                                            <input title="Richiede posizione GPS" type="text" name="lat" placeholder="Latitudine..." class="form-control blocco" id="lat" readonly required tabindex="-1">
+				                        </div>
+				                        <div class="form-group" id="longD">
+				                        	<label class="sr-only" for="form-about-yourself">Longitudine</label>
+                                            <input title="Richiede posizione GPS" type="text" name="long" placeholder="Longitudine..." class="form-control blocco" id="long" readonly required tabindex="-1">
+				                        </div>
+				                        <button type="submit" class="btn">Invia i tuoi dati!</button>
+				                    </form>
+			                    </div>
+                        	</div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+                    <div id="map"></div>
+        <!-- Footer -->
+        <footer>
+        	<div class="container">
+        		<div class="row">
+
+        			<div class="col-sm-8 col-sm-offset-2">
+        				<div class="footer-border"></div>
+        				<p>Made by Bevilacqua - De trino <a href="#" target="_blank"><strong>Easy Find</strong></a>
+        					Le tue esigenze nei tuoi dintorni. <i class="fa fa-smile-o"></i></p>
+        			</div>
+
+        		</div>
+        	</div>
+        </footer>
+        <!-- Javascript -->
+        <script src="/static/assets/js/jquery-1.11.1.min.js"></script>
+        <script src="/static/assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/static/assets/js/jquery.backstretch.min.js"></script>
+        <script src="/static/assets/js/scripts.js"></script>
+        <script src="/static/assets/js/map.js"></script>
+
+
+        <!--[if lt IE 10]>
+            <script src="/static/assets/js/placeholder.js"></script>
+        <![endif]-->
+
+    </body>
+
+</html>

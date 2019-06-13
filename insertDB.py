@@ -23,6 +23,19 @@ def home(nome):
     print('dizionario: ' + str(dizionario))
     return render_template("home.html", message=dizionario)
 
+
+def insert_prod(categoria,nome,n_img):
+    engine = db.create_engine('sqlite:///easyFindDB.db')
+    connection = engine.connect()
+    metadata = db.MetaData()
+    prod = db.Table('prodotto', metadata, autoload=True, autoload_with=engine)
+    query = db.select([db.func.max(prod.columns.id)])
+    ris = connection.execute(query).fetchall()
+    maxIdProd = ris[0][0]
+    query2 = db.insert(prod).values(id=int(maxIdProd) + 1, categoria=categoria, nome_prodotto=nome, nome_img=n_img)
+    connection.execute(query2)
+    return
+
 def insert(nome, password, citta, indirizzo, lat, long):
     engine = db.create_engine('sqlite:///easyFindDB.db')
     connection = engine.connect()
@@ -52,18 +65,6 @@ def access(nome, password):
         return redirect(url_for('Home_page', nome=nome))
     return render_template('index.html', error={'value': 'error_login'})
 
-def insertProdotto(categoria, nome_prodotto):
-    engine = db.create_engine('sqlite:///easyFindDB.db')
-    connection = engine.connect()
-    metadata = db.MetaData()
-    prod = db.Table('prodotto', metadata, autoload=True, autoload_with=engine)
-    query = db.select([db.func.max(prod.columns.id)])
-    ris = connection.execute(query).fetchall()
-    maxIdProd = ris[0][0]
-
-    query2 = db.insert(prod).values(id = int(maxIdProd)+1, categoria = categoria.upper(), nome_prodotto = nome_prodotto.upper(), nome_img = nome_prodotto.upper() )
-    connection.execute(query2)
-    return redirect("/Home_page")
 
 def insertOggetto(nomeProdotto, quantita, prezzo):
     engine = db.create_engine('sqlite:///easyFindDB.db')

@@ -34,21 +34,22 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/assets/ico/mstile-144x144.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/assets/ico/mstile-70x70.png">
         <link rel="apple-touch-icon-precomposed" href="/static/assets/ico/mstile-144x144.png">
-
-
-
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-              integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-              crossorigin=""/>
-        <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-                integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-                crossorigin=""></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+         <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
-        <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <!-- Load Leaflet from CDN-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet-src.js"></script>
+
+    <!-- Load Esri Leaflet from CDN -->
+    <script src="https://unpkg.com/esri-leaflet"></script>
+
+    <!-- Esri Leaflet Geocoder -->
+    <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css">
+    <script src="https://unpkg.com/esri-leaflet-geocoder"></script>
+
         <style>
             body {
                 padding: 0;
@@ -119,16 +120,16 @@
                              }
                             else
                             {
-                                 if (item === 'no_access')
+                                 if (item === 'disconnect')
                              {
                                  html = "                    <div class=\"row_mio\" style = \"margin-top: 30px\">\n" +
-                                     "                        <div class=\"col-smio-8 text\" style = \"background: red !important;\">\n" +
+                                     "                        <div class=\"col-smio-8 text\" style = \"background: green !important;\">\n" +
                                      "                            <div style=\"display: flex;align-items: flex-start;justify-content: center; \">\n" +
-                                     "                                <h1><strong>Errore: Accedi prima di visitare la Home pageù1</strong></h1>\n" +
+                                     "                                <h1><strong>Disconnessione completata!</strong></h1>\n" +
                                      "                            </div>\n" +
                                      "                            <div>\n" +
                                      "                            \t<p>\n" +
-                                     "                                Per visitare la Home page viene richiesto di accedere o registrare un account" +
+                                     "                                Grazie per aver usufruito della piattaforma Easy Find, arrivederci a presto!" +
                                      "                            \t</p>\n" +
                                      "                            </div>\n" +
                                      "                        </div>\n" +
@@ -197,11 +198,11 @@
 				                        </div>
 				                        <div class="form-group">
 				                        	<label class="sr-only" for="citta">Citt&agrave;</label>
-				                        	<input type="text" name="citta" placeholder="Citt&agrave;..." class="form-control" id="Citta" required>
+				                        	<input type="text" name="citta" placeholder="Citt&agrave;..." class="form-control blocco" id="Citta" readonly required tabindex="-1">
 				                        </div>
                                         <div class="form-group">
 				                        	<label class="sr-only" for="indirizzo">Indirizzo</label>
-				                        	<input type="text" name="indirizzo" placeholder="Indirizzo..." class="form-control" id="indirizzo" required>
+				                        	<input type="text" name="indirizzo" placeholder="Indirizzo..." class="form-control blocco" id="indirizzo" readonly required tabindex="-1" >
 				                        </div>
 				                        <div class="form-group" id="latD">
 				                        	<label class="sr-only" for="form-about-yourself">Latitudine</label>

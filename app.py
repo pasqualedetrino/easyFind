@@ -7,6 +7,24 @@ import insertDB
 
 app = Flask(__name__)
 
+from flask import Flask,redirect,request,session
+from flask_login import LoginManager, login_user, logout_user, login_required, UserMixin
+
+app = Flask(__name__)
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = ''
+app.config['SECRET_KEY'] = "lkkajdghdadkglajkgah"
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User(user_id)
+
+class User(UserMixin):
+  def __init__(self,id):
+    self.id = id
+
+
 
 if __name__ == '__main__':
     app.run()
@@ -62,9 +80,11 @@ def results():
 
 
 
-@app.route('/Home_page')
+@app.route('/Home_page', methods=['GET'])
+@login_required
 def Home_page():
-    return insertDB.home()
+    username = request.args.get('nome')
+    return insertDB.home(username)
 
 
 from flask_restplus import Api, Resource
@@ -82,3 +102,13 @@ class prodottoCitta(Resource):
 class prodottoCoordinate(Resource):
     def get(self, nomeProdotto, lat, long, raggio):
         return ApiUser.ProdottoComunePosizione(nomeProdotto, lat, long, raggio)
+
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return render_template('index.html', error = {'value' : 'disconnect'})
+
+

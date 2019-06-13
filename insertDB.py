@@ -1,10 +1,10 @@
 import sqlalchemy as db
-from flask import render_template , redirect
-
+from flask import render_template , redirect, url_for
+import app
 accesso = False
 
 
-def home():
+def home(nome):
     engine = db.create_engine('sqlite:///easyFindDB.db')
     connection = engine.connect()
     metadata = db.MetaData()
@@ -12,7 +12,7 @@ def home():
     query3 = db.select([prod.columns.nome_prodotto.distinct()])
     ris = connection.execute(query3)
     ResultSet = ris.fetchall()
-    dizionario = {'nome_prod': []}
+    dizionario = {'nome':nome, 'nome_prod': []}
     lista = []
     i = 0
     for var in ResultSet:
@@ -35,7 +35,8 @@ def insert(nome, password, citta, indirizzo, lat, long):
         return render_template('index.html', error={'value': 'error_register'})
     query2 = db.insert(emp).values(nome=nome.upper(), password=password, citta=citta.upper(), indirizzo = indirizzo.upper(), lat=lat, long=long)
     connection.execute(query2)
-    return redirect("/Home_page")
+    app.login_user(app.User(nome))
+    return redirect(url_for('Home_page', nome=nome))
 
 
 def access(nome, password):
@@ -47,7 +48,6 @@ def access(nome, password):
     ResultProxy = connection.execute(query)
     ResultSet = ResultProxy.fetchall()
     if (len(ResultSet) == 1):
-        global accesso
-        accesso = True
-        return redirect("/Home_page")
+        app.login_user(app.User(nome))
+        return redirect(url_for('Home_page', nome=nome))
     return render_template('index.html', error={'value': 'error_login'})

@@ -54,12 +54,6 @@ def signIn():
 
 
 
-@app.route('/showSignUp')
-def showSignUp():
-    return render_template('home.html')
-
-
-
 dropzone = Dropzone(app)
 app.config['DROPZONE_UPLOAD_MULTIPLE'] = False
 app.config['DROPZONE_ALLOWED_FILE_CUSTOM'] = True
@@ -77,7 +71,9 @@ patch_request_class(app)  # set maximum file size, default is 16MB
 def results():
     return render_template('results.html')
 
-
+@app.route('/home')
+def home():
+    return render_template('home.html')
 
 
 @app.route('/Home_page', methods=['GET'])

@@ -60,11 +60,31 @@ def results():
     return render_template('results.html')
 
 
-
-
-@app.route('/Home_page', methods= ['POST'])
+@app.route('/Home_page')
 def Home_page():
     return insertDB.home()
+
+@app.route('/insertProd', methods=['POST'])
+def insertProd():
+    if request.method == 'POST':
+        categoria = request.form.get('categoria')
+        nome_prodotto = request.form.get('nome_prodotto')
+        return (insertDB.insertProdotto(categoria, nome_prodotto) )
+
+@app.route('/insertOgg', methods=['POST'])
+def insertOgg():
+    if request.method == 'POST':
+        #nomeProdotto = request.form.get('bottone')
+        nomeProdotto = 'salame'
+
+        quantita = request.form.get('quantita')
+        prezzo = request.form.get('prezzo')
+        #print(request.form)
+        #print('nome ' + nomeProdotto)
+        ##print('quanti ' + quantita)
+        #print('prezzo ' + prezzo)
+        return (insertDB.insertOggetto(nomeProdotto, quantita, prezzo) )
+
 
 # ---------------------------------------------------------------------------------------------------
 

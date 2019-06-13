@@ -20,7 +20,7 @@ def home():
     print('dizionario: ' + str(dizionario))
     return render_template("home.html", message=dizionario)
 
-def insert(nome, password, citta, lat, long):
+def insert(nome, password, citta, indirizzo,lat, long):
     engine = db.create_engine('sqlite:///easyFindDB.db')
     connection = engine.connect()
     metadata = db.MetaData()
@@ -31,7 +31,7 @@ def insert(nome, password, citta, lat, long):
     if (len(ResultSet) > 0):
         if (ResultSet[0][0] == nome):
             return render_template('index.html', error={'value': 'error_register'})
-    query2 = db.insert(emp).values(nome=nome, password=password, citta=citta, lat=lat, long=long)
+    query2 = db.insert(emp).values(nome=nome, password=password, citta=citta, indirizzo = indirizzo, lat=lat, long=long)
     connection.execute(query2)
     return home()
 

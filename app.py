@@ -22,9 +22,10 @@ def signUp():
         name = request.form.get('nome')
         password = request.form.get('password')
         citta = request.form.get('citta')
+        indirizzo = request.form.get('indirizzo')
         lat = float(request.form.get('lat'))
         long = float(request.form.get('long'))
-        return (insertDB.insert(name, password, citta, lat, long))
+        return (insertDB.insert(name, password, citta, indirizzo, lat, long))
 
 @app.route('/signIn', methods=['POST'])
 def signIn():
@@ -72,3 +73,9 @@ api.init_app(app)
 class prodottoCitta(Resource):
     def get(self, citta, nomeProdotto):
         return ApiUser.ProdottoComune(citta, nomeProdotto)
+
+
+@api.route('/prodottoCoordinate/<nomeProdotto>/<lat>/<long>/<raggio>')
+class prodottoCoordinate(Resource):
+    def get(self, nomeProdotto, lat, long, raggio):
+        return ApiUser.ProdottoComunePosizione(nomeProdotto, lat, long, raggio)

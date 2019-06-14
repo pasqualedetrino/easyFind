@@ -34,8 +34,6 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/assets/ico/mstile-144x144.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/assets/ico/mstile-70x70.png">
         <link rel="apple-touch-icon-precomposed" href="/static/assets/ico/mstile-144x144.png">
- {{ dropzone.load() }}
-    {{ dropzone.style('border: 2px dashed #0087F7; margin: 10%; min-height: 400px;') }}
     </head>
 
     <body>
@@ -59,8 +57,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <div class="row">
                         <div class="col-sm-5">
 
@@ -90,16 +86,18 @@
 	                        		</div>
 	                            </div>
                                 <div class="form-bottom">
-				                    <form role="form" action="http://127.0.0.1:5000/insertProd" method="post" class="registration-form">
+				                    <form role="form" action="http://127.0.0.1:5000/uploader" method="post" class="registration-form"  enctype = "multipart/form-data">
 				                    	<div class="form-group">
 				                        	<label class="sr-only" for="categoria">Categoria</label>
 				                        	<input type="categoria" name="categoria" placeholder="Categoria..." class="form-control" id="categoria" required>
 				                        </div>
 				                        <div class="form-group">
+                                            <input type="text" id="nome" name="nome" hidden>
 				                        	<label class="sr-only" for="Nome_prodotto">Nome prodotto</label>
 				                        	<input type="text" name="nome_prodotto" placeholder="Nome prodotto..." class="form-control" id="nome_prodotto" required>
+                                            <br>
+                                            <input type = "file" name = "file" class="form-control"/>
 				                        </div>
-
 				                        <button type="submit" class="btn">Carica il prodotto!</button>
 	                                </form>
 			                    </div>
@@ -110,7 +108,11 @@
 
                 </div>
             </div>
-
+<div id="mybutton">
+    <a href="http://127.0.0.1:5000/logout">
+<button class="feedback"><img src="/static/assets/img/exit.png"></button>
+    </a>
+</div>
         </div>
         <!-- Footer -->
         <footer>
@@ -125,6 +127,7 @@
 
         		</div>
         	</div>
+
         </footer>
         <!-- Javascript -->
         <script src="/static/assets/js/jquery-1.11.1.min.js"></script>
@@ -134,7 +137,8 @@
 
         <script type="text/javascript">
             var dati = {{ message|tojson }}
-
+             var username=dati.nome
+            console.log(dati)
             var html =""
             for(var d in dati.nome_prod)
             {
@@ -152,6 +156,7 @@
                     "                                    </div>"
 
             }
+	document.getElementById("nome").value = username
             document.getElementById('lista_prodotti').innerHTML = html
         </script>
 

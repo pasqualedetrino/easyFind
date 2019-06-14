@@ -7,18 +7,19 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
     id: 'mapbox.streets'
 }).addTo(map);
 var pos;
+var geocodeService = L.esri.Geocoding.geocodeService();
 
 function onLocationFound(e) {
 	var radius = e.accuracy / 2;
 	pos = e.latlng;
-	L.marker(e.latlng).addTo(map)
-		.bindPopup("You are within " + radius + " meters from this point").openPopup();
-	/*html = "\t\t\t\t                        \t<label class=\"sr-only\" for=\"form-about-yourself\">Latitudine</label>\n" +
-		"                                            <input title=\"Longitudine: Acquisita tramite posizione GPS\" type=\"text\" name=\"lat\" placeholder=\"Latitudine...\" class=\"form-control\" id=\"lat\" value=\""+pos.lat+"\" disabled required>";*/
+	geocodeService.reverse().latlng(e.latlng).run(function(error, result) {
+      L.marker(result.latlng).addTo(map).bindPopup(result.address.Match_addr).openPopup();
+		document.getElementById("indirizzo").value = result.address.Address+", "+result.address.Postal;
+		document.getElementById("Citta").value = result.address.City;
+    });
+
 	document.getElementById("lat").value = pos.lat;
 
-	 /*html = "\t\t\t\t                        \t<label class=\"sr-only\" for=\"form-about-yourself\">Longitudine</label>\n" +
-		"                                            <input title=\"Latitudine: Acquisita tramite posizione GPS\" type=\"text\" name=\"long\" placeholder=\"Longitudine...\" class=\"form-control\" id=\"long\"  value=\""+pos.lng+"\" disabled required>";*/
 	document.getElementById("long").value = pos.lng;
 }
 

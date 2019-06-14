@@ -1,11 +1,26 @@
 from flask import Flask , render_template, redirect
-from flask import request
-from flask_dropzone import Dropzone
-from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
-import os
 import insertDB
 
 app = Flask(__name__)
+
+from flask import Flask,request,session
+from flask_login import LoginManager, login_user, logout_user, login_required, UserMixin
+from werkzeug import secure_filename
+app = Flask(__name__)
+app = Flask(__name__)
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = ''
+app.config['SECRET_KEY'] = "lkkajdghdadkglajkgah"
+app.config [ 'UPLOAD_FOLDER'] = '/static/prodotti'
+@login_manager.user_loader
+def load_user(user_id):
+    return User(user_id)
+
+class User(UserMixin):
+  def __init__(self,id):
+    self.id = id
+
 
 
 if __name__ == '__main__':
@@ -35,43 +50,15 @@ def signIn():
         return (insertDB.access(name, password))
 
 
-
-@app.route('/showSignUp')
-def showSignUp():
-    return render_template('home.html')
-
-
-
-dropzone = Dropzone(app)
-app.config['DROPZONE_UPLOAD_MULTIPLE'] = False
-app.config['DROPZONE_ALLOWED_FILE_CUSTOM'] = True
-app.config['DROPZONE_ALLOWED_FILE_TYPE'] = 'image/*'
-app.config['DROPZONE_REDIRECT_VIEW'] = 'results'
-
-
-# Uploads settings
-app.config['UPLOADED_PHOTOS_DEST'] = os.getcwd() + '/uploads'
-photos = UploadSet('photos', IMAGES)
-configure_uploads(app, photos)
-patch_request_class(app)  # set maximum file size, default is 16MB
-
-@app.route('/results')
-def results():
-    return render_template('results.html')
-
-
-@app.route('/Home_page')
+@app.route('/Home_page', methods=['GET'])
+@login_required
 def Home_page():
-    return insertDB.home()
+    username = request.args.get('nome')
+    return insertDB.home(username)
 
-@app.route('/insertProd', methods=['POST'])
-def insertProd():
-    if request.method == 'POST':
-        categoria = request.form.get('categoria')
-        nome_prodotto = request.form.get('nome_prodotto')
-        return (insertDB.insertProdotto(categoria, nome_prodotto) )
 
 @app.route('/insertOgg', methods=['POST'])
+@login_required
 def insertOgg():
     if request.method == 'POST':
         #nomeProdotto = request.form.get('bottone')
@@ -117,3 +104,24 @@ class categorie(Resource):
 class prodotticategoria(Resource):
     def get(self, categoria):
         return ApiUser.ProdottiCategoria(categoria)
+
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return render_template('index.html', error = {'value' : 'disconnect'})
+
+
+@app.route('/uploader', methods = ['GET', 'POST'])
+@login_required
+def upload_file():
+   if request.method == 'POST':
+      f = request.files['file']
+      f.save(secure_filename(f.filename))
+      username = request.form.get('nome')
+      categoria= request.form.get('categoria')
+      nome_prod = request.form.get('nome_prodotto')
+      insertDB.insert_prod(categoria,nome_prod,f.filename)
+      return redirect(insertDB.url_for('Home_page', nome=username))

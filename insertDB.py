@@ -1,7 +1,11 @@
 import sqlalchemy as db
 from flask import render_template , redirect, url_for
 import app
-accesso = False
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 def home(nome):
@@ -32,8 +36,14 @@ def insert_prod(categoria,nome,n_img):
     query = db.select([db.func.max(prod.columns.id)])
     ris = connection.execute(query).fetchall()
     maxIdProd = ris[0][0]
-    query2 = db.insert(prod).values(id=int(maxIdProd) + 1, categoria=categoria, nome_prodotto=nome, nome_img=n_img)
-    connection.execute(query2)
+    if n_img and allowed_file(n_img.filename):
+        nome_im = app.secure_filename(str(int(maxIdProd) + 1)+'.'+n_img.filename.rsplit('.', 1)[1].lower())
+        path_img=app.os.path.join(app.app.config['UPLOAD_FOLDER'], nome_im)
+        n_img.save(path_img)
+        query2 = db.insert(prod).values(id=int(maxIdProd) + 1, categoria=categoria, nome_prodotto=nome, nome_img=nome_im)
+        connection.execute(query2)
+    else:
+        print('File non concesso!')
     return
 
 def insert(nome, password, citta, indirizzo, lat, long):
@@ -46,10 +56,11 @@ def insert(nome, password, citta, indirizzo, lat, long):
     ResultSet = ResultProxy.fetchall()
     if (len(ResultSet) > 0):
         return render_template('index.html', error={'value': 'error_register'})
-    query2 = db.insert(emp).values(nome=nome.upper(), password=password, citta=citta.upper(), indirizzo = indirizzo.upper(), lat=lat, long=long)
+    val_hash = app.hashing.hash_value(password, salt='geo')
+    query2 = db.insert(emp).values(nome=nome.upper(), password=val_hash, citta=citta.upper(), indirizzo = indirizzo.upper(), lat=lat, long=long)
     connection.execute(query2)
     app.login_user(app.User(nome))
-    return redirect(url_for('Home_page', nome=nome))
+    return redirect('/Home_page')
 
 
 def access(nome, password):
@@ -57,12 +68,13 @@ def access(nome, password):
     connection = engine.connect()
     metadata = db.MetaData()
     emp = db.Table('venditore', metadata, autoload=True, autoload_with=engine)
-    query = db.select([emp.columns.nome]).where(db.and_(emp.columns.nome == nome.upper(), emp.columns.password == password))
+    query = db.select([emp.columns.nome, emp.columns.password]).where(db.and_(emp.columns.nome == nome.upper()))
     ResultProxy = connection.execute(query)
     ResultSet = ResultProxy.fetchall()
     if (len(ResultSet) == 1):
-        app.login_user(app.User(nome))
-        return redirect(url_for('Home_page', nome=nome))
+        if app.hashing.check_value(ResultSet[0][1], password, salt='geo'):
+            app.login_user(app.User(nome))
+            return redirect('/Home_page')
     return render_template('index.html', error={'value': 'error_login'})
 
 

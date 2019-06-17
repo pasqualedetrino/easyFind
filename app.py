@@ -1,18 +1,27 @@
 from flask import Flask , render_template, redirect
 import insertDB
-
-app = Flask(__name__)
-
+import os
+from flask import Flask
+from flask_hashing import Hashing
 from flask import Flask,request,session
-from flask_login import LoginManager, login_user, logout_user, login_required, UserMixin
+from flask_login import LoginManager, login_user, logout_user, login_required, UserMixin, current_user
 from werkzeug import secure_filename
+
 app = Flask(__name__)
-app = Flask(__name__)
+app.config['HASHING_METHOD'] = 'sha384'
+
+hashing = Hashing(app)
+hashing.init_app(app)
+
+
+
+
+
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = ''
 app.config['SECRET_KEY'] = "lkkajdghdadkglajkgah"
-app.config [ 'UPLOAD_FOLDER'] = '/static/prodotti'
+app.config [ 'UPLOAD_FOLDER'] = 'static/prodotti'
 @login_manager.user_loader
 def load_user(user_id):
     return User(user_id)
@@ -21,6 +30,8 @@ class User(UserMixin):
   def __init__(self,id):
     self.id = id
 
+  def get_name(self):
+        return self.id
 
 
 if __name__ == '__main__':
@@ -50,10 +61,10 @@ def signIn():
         return (insertDB.access(name, password))
 
 
-@app.route('/Home_page', methods=['GET'])
+@app.route('/Home_page')
 @login_required
 def Home_page():
-    username = request.args.get('nome')
+    username = current_user.get_name()
     return insertDB.home(username)
 
 
@@ -119,9 +130,8 @@ def logout():
 def upload_file():
    if request.method == 'POST':
       f = request.files['file']
-      f.save(secure_filename(f.filename))
       username = request.form.get('nome')
       categoria= request.form.get('categoria')
       nome_prod = request.form.get('nome_prodotto')
-      insertDB.insert_prod(categoria,nome_prod,f.filename)
-      return redirect(insertDB.url_for('Home_page', nome=username))
+      insertDB.insert_prod(categoria,nome_prod,f)
+      return redirect('Home_page')

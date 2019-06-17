@@ -78,26 +78,28 @@ def access(nome, password):
     return render_template('index.html', error={'value': 'error_login'})
 
 
-def insertOggetto(nomeProdotto, quantita, prezzo):
+def insertOggetto(nomeProdotto, quantita, prezzo, nome):
     engine = db.create_engine('sqlite:///easyFindDB.db')
     connection = engine.connect()
     metadata = db.MetaData()
 
-    venditore = db.Table('venditore', metadata, autoload=True, autoload_with=engine)
     prodotto = db.Table('prodotto', metadata, autoload=True, autoload_with=engine)
     oggetto = db.Table('oggetto', metadata, autoload=True, autoload_with=engine)
 
     query = db.select([db.func.max(oggetto.columns.id_oggetto)]) # ultimo id dell' oggetto
     ris = connection.execute(query).fetchall()
     maxIdOgg = ris[0][0]
+    if maxIdOgg  is None:
+        maxIdOgg = 0
 
     print(nomeProdotto)
-    query2 = db.select([prodotto.columns.id]).where(prodotto.columns.nome_prodotto == nomeProdotto ) #id del prodotto dato un nome
+    query2 = db.select([prodotto.columns.id]).where(prodotto.columns.nome_prodotto == nomeProdotto.upper() )
     idP = connection.execute(query2).fetchall()
     print(idP)
     idProdotto = idP[0][0]
 
-    query3 = db.insert(oggetto).values(id_oggetto = int(maxIdOgg)+1, nome_v = "salumeria", id_prodotto = int(idProdotto), quantita = int(quantita), prezzo = int(prezzo) )
+    query3 = db.insert(oggetto).values(id_oggetto = int(maxIdOgg)+1, nome_v = nome.upper(), id_prodotto = int(idProdotto), quantita = int(quantita), prezzo = int(prezzo) )
     connection.execute(query3)
 
+    print('ho iserito!')
     return redirect("/Home_page")

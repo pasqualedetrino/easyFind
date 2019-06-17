@@ -72,16 +72,11 @@ def Home_page():
 @login_required
 def insertOgg():
     if request.method == 'POST':
-        #nomeProdotto = request.form.get('bottone')
-        nomeProdotto = 'salame'
-
+        nomeProdotto = request.form.get('articolo')
         quantita = request.form.get('quantita')
         prezzo = request.form.get('prezzo')
-        #print(request.form)
-        #print('nome ' + nomeProdotto)
-        ##print('quanti ' + quantita)
-        #print('prezzo ' + prezzo)
-        return (insertDB.insertOggetto(nomeProdotto, quantita, prezzo) )
+        nome = current_user.get_name()
+        return (insertDB.insertOggetto(nomeProdotto, quantita, prezzo, nome) )
 
 
 # ---------------------------------------------------------------------------------------------------

@@ -145,7 +145,8 @@
                 html += "<div style=\"display: flex;align-items: flex-start;justify-content: center;\">\n" +
                     " <form role=\"form\" action=\"http://127.0.0.1:5000/insertOgg\" method=\"post\" class=\"registration-form\">" +
                     "      <div>\n" +
-                    "                                            <button name = \"bottone\">" + dati.nome_prod[d] + "</button>\n" +
+                    "<input type=\"text\" name=\"articolo\" id=\"articolo\"  value  = "+dati.nome_prod[d] + " class=\"form-control blocco\" readonly required tabindex=\"-1\" >" +
+
                     "                                        </div>\n" +
                     "                                        <div >\n" +
                     "                                            <input type=\"number\" name = \"quantita\" placeholder=\"Quantit&agrave;\">\n" +
@@ -153,11 +154,14 @@
                     "                                            <button type=\"submit\" >Invia</button>\n" +
                     "\n" +
                     "                                        </div> </form>\n" +
-                    "                                    </div>"
+                    "                                    </div> "
+
+
 
             }
 	document.getElementById("nome").value = username
             document.getElementById('lista_prodotti').innerHTML = html
+
         </script>
 
         <!--[if lt IE 10]>

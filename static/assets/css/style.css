@@ -132,8 +132,8 @@ img { max-width: 100%; }
 	margin-top: 70px;
 }
 
-#map { height: 0%;
-    width: 0%;
+#map { height: 500px;
+    margin-bottom: 20px;
 }
 .blocco{
 	pointer-events: none

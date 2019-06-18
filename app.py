@@ -142,7 +142,6 @@ def logout():
 def upload_file():
    if request.method == 'POST':
       f = request.files['file']
-      username = request.form.get('nome')
       categoria= request.form.get('categoria')
       nome_prod = request.form.get('nome_prodotto')
       insertDB.insert_prod(categoria,nome_prod,f)

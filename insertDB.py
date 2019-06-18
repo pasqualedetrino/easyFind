@@ -16,20 +16,23 @@ def home(nome, categoria):
     prod = db.Table('prodotto', metadata, autoload=True, autoload_with=engine)
     print('---CATEGORIA', categoria)
     if categoria is None:
-        query3 = db.select([prod.columns.nome_prodotto.distinct()])
+        dizionario = {'nome':nome, 'nome_prod': [], 'id': [], 'cat_scelta': categoria}
     else:
-        query3 = db.select([prod.columns.nome_prodotto.distinct()]).where(prod.columns.categoria == categoria)
-    ris = connection.execute(query3)
-    ResultSet = ris.fetchall()
-    dizionario = {'nome':nome, 'nome_prod': []}
-    lista = []
-    i = 0
-    for var in ResultSet:
-        lista.insert(i, var[0])
-        i = i + 1
-    dizionario['nome_prod'] = lista
-    print('lista: ' + str(lista))
-    print('dizionario: ' + str(dizionario))
+        query3 = db.select([prod.columns.nome_prodotto.distinct(), prod.columns.nome_img]).where(prod.columns.categoria == categoria)
+        ris = connection.execute(query3)
+        ResultSet = ris.fetchall()
+        dizionario = {'nome':nome, 'nome_prod': [], 'id': [], 'cat_scelta': categoria}
+        lista = []
+        listId = []
+        i = 0
+        for var in ResultSet:
+            lista.insert(i, var[0])
+            listId.insert(i,var[1])
+            i = i + 1
+        dizionario['nome_prod'] = lista
+        dizionario['id'] = listId
+        print('lista: ' + str(lista))
+        print('dizionario: ' + str(dizionario))
 
     oggetto = db.Table('oggetto', metadata, autoload=True, autoload_with=engine)
 
@@ -61,7 +64,7 @@ def insert_prod(categoria,nome,n_img):
         nome_im = app.secure_filename(str(int(maxIdProd) + 1)+'.'+n_img.filename.rsplit('.', 1)[1].lower())
         path_img=app.os.path.join(app.app.config['UPLOAD_FOLDER'], nome_im)
         n_img.save(path_img)
-        query2 = db.insert(prod).values(id=int(maxIdProd) + 1, categoria=categoria, nome_prodotto=nome, nome_img=nome_im)
+        query2 = db.insert(prod).values(id=int(maxIdProd) + 1, categoria=categoria, nome_prodotto=nome.upper(), nome_img=nome_im)
         connection.execute(query2)
     else:
         print('File non concesso!')
@@ -119,7 +122,7 @@ def insertOggetto(nomeProdotto, quantita, prezzo, nome):
     print(idP)
     idProdotto = idP[0][0]
 
-    query3 = db.insert(oggetto).values(id_oggetto = int(maxIdOgg)+1, nome_v = nome.upper(), id_prodotto = int(idProdotto), quantita = int(quantita), prezzo = int(prezzo) )
+    query3 = db.insert(oggetto).values(id_oggetto = int(maxIdOgg)+1, nome_v = nome.upper(), id_prodotto = int(idProdotto), quantita = int(quantita), prezzo = float(prezzo))
     connection.execute(query3)
 
     print('ho iserito!')

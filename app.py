@@ -65,7 +65,7 @@ def signIn():
 @login_required
 def Home_page():
     username = current_user.get_name()
-    return insertDB.home(username)
+    return insertDB.home(username, None)
 
 
 @app.route('/insertOgg', methods=['POST'])
@@ -91,10 +91,10 @@ def myOgg():
 @app.route('/setCategoria', methods=['POST'])
 @login_required
 def get_post_javascript_data():
-    jsdata = request.form['javascript_data']
+    jsdata = request.form['cat']
     print('jsondata ' + jsdata)
-
-    #return insertDB.home(jsdata)
+    username = current_user.get_name()
+    return insertDB.home(username, jsdata)
 
 # ---------------------------------------------------------------------------------------------------
 

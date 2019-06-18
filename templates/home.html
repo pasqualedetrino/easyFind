@@ -260,14 +260,14 @@
             html3 += "<div class=\"dropdown\">\n" +
                         "  <button onclick=\"myFunction()\" class=\"dropbtn\">Dropdown</button>\n" +
                         "  <div id=\"myDropdown\" class=\"dropdown-content\">\n" +
-            " <form role=\"form\" action=\"http://127.0.0.1:5000/setCategoria\" method=\"post\" class=\"registration-form\">"
+            " <form id=\"formcat\" role=\"form\" action=\"http://127.0.0.1:5000/setCategoria\" method=\"post\" class=\"registration-form\">                                             <input type=\"text\" id=\"cat\" name=\"cat\" hidden>\n"
             for(var i in c)
             {
                 html3 +=
                     " <a href=\"#\" id=\"categoriaScelta\" onclick=\"setCategoria('"+c[i].categoria+"')\">"+ c[i].categoria + "</a>\n"
 
             }
-            html3 +=  "</div>\n" + "</div>\n"
+            html3 +=  "</div>\n" + "</div>\n</form>"
 
         /* When the user clicks on the button,
         toggle between hiding and showing the dropdown content */
@@ -290,9 +290,9 @@
         }
 
         function setCategoria(categoria) {
-            $.post( "/setCategoria", {
-            javascript_data: categoria
-            });
+            document.getElementById('cat').value = categoria;
+            document.getElementById('formcat').submit()
+
         }
         document.getElementById('categorie').innerHTML = html3
         </script>

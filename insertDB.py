@@ -9,12 +9,16 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-def home(nome):
+def home(nome, categoria):
     engine = db.create_engine('sqlite:///easyFindDB.db')
     connection = engine.connect()
     metadata = db.MetaData()
     prod = db.Table('prodotto', metadata, autoload=True, autoload_with=engine)
-    query3 = db.select([prod.columns.nome_prodotto.distinct()])
+    print('---CATEGORIA', categoria)
+    if categoria is None:
+        query3 = db.select([prod.columns.nome_prodotto.distinct()])
+    else:
+        query3 = db.select([prod.columns.nome_prodotto.distinct()]).where(prod.columns.categoria == categoria)
     ris = connection.execute(query3)
     ResultSet = ris.fetchall()
     dizionario = {'nome':nome, 'nome_prod': []}
@@ -148,4 +152,3 @@ def modificaOggetto(mioProdotto, miaQuantita):
 
 
     return redirect("/Home_page")
-

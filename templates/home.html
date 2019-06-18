@@ -146,7 +146,7 @@
 	                        		</div>
 	                            </div>
                                 <div class="form-bottom">
-				                    <form role="form" action="http://127.0.0.1:5000/uploader" method="post" class="registration-form"  enctype = "multipart/form-data">
+				                    <form role="form" action="uploader" method="post" class="registration-form"  enctype = "multipart/form-data">
 				                    	<div class="form-group">
 				                        	<label class="sr-only" for="categoria">Categoria</label>
 				                        	<input type="categoria" name="categoria" placeholder="Categoria..." class="form-control" id="categoria" required>
@@ -169,7 +169,7 @@
                 </div>
             </div>
 <div id="mybutton">
-    <a href="http://127.0.0.1:5000/logout">
+    <a href="logout">
 <button class="feedback"><img src="/static/assets/img/exit.png"></button>
     </a>
 </div>
@@ -203,7 +203,7 @@
             for(var d in dati.nome_prod)
             {
                 html += "<div style=\"display: flex;align-items: flex-start;justify-content: center;\">\n" +
-                    " <form role=\"form\" action=\"http://127.0.0.1:5000/insertOgg\" method=\"post\" class=\"registration-form\">" +
+                    " <form role=\"form\" action=\"insertOgg\" method=\"post\" class=\"registration-form\">" +
                     "      <div>\n" +
                     "<input type=\"text\" name=\"articolo\" id=\"articolo\"  value  = "+dati.nome_prod[d] + " class=\"form-control blocco\" readonly required tabindex=\"-1\" >" +
 
@@ -236,7 +236,7 @@
                 console.log('qui')
 
                 html2 += "<div style=\"display: flex;align-items: flex-start;justify-content: center;\">\n" +
-                        " <form role=\"form\" action=\"http://127.0.0.1:5000/myOgg\" method=\"post\" class=\"registration-form\">" +
+                        " <form role=\"form\" action=\"myOgg\" method=\"post\" class=\"registration-form\">" +
                     "      <div>\n" +
                     "<input type=\"text\" name=\"mioArticolo\" id=\"mioArticolo\"  value  = "+q[m].nome_prodotto + " class=\"form-control blocco\" readonly required tabindex=\"-1\" >" +
                     "<input type=\"number\" name = \"miaQuantita\" id=\"miaQuantita\"  value  = "+q[m].quantita + ">\n" +
@@ -260,7 +260,7 @@
             html3 += "<div class=\"dropdown\">\n" +
                         "  <button onclick=\"myFunction()\" class=\"dropbtn\">Dropdown</button>\n" +
                         "  <div id=\"myDropdown\" class=\"dropdown-content\">\n" +
-            " <form id=\"formcat\" role=\"form\" action=\"http://127.0.0.1:5000/setCategoria\" method=\"post\" class=\"registration-form\">                                             <input type=\"text\" id=\"cat\" name=\"cat\" hidden>\n"
+            " <form id=\"formcat\" role=\"form\" action=\"setCategoria\" method=\"post\" class=\"registration-form\">                                             <input type=\"text\" id=\"cat\" name=\"cat\" hidden>\n"
             for(var i in c)
             {
                 html3 +=

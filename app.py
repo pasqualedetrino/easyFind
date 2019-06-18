@@ -78,6 +78,23 @@ def insertOgg():
         nome = current_user.get_name()
         return (insertDB.insertOggetto(nomeProdotto, quantita, prezzo, nome) )
 
+@app.route('/myOgg', methods=['POST'])
+@login_required
+def myOgg():
+    if request.method == 'POST':
+        mioArticolo = request.form.get('mioArticolo')
+        miaQuantita = request.form.get('miaQuantita')
+        print('mioArticolo ' + mioArticolo)
+        print('miaQuantita ' + miaQuantita)
+        return (insertDB.modificaOggetto(mioArticolo, miaQuantita) )
+
+@app.route('/setCategoria', methods=['POST'])
+@login_required
+def get_post_javascript_data():
+    jsdata = request.form['javascript_data']
+    print('jsondata ' + jsdata)
+
+    return insertDB.home(jsdata)
 
 # ---------------------------------------------------------------------------------------------------
 

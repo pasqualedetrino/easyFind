@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="00b34b1f-539c-49da-8dfb-67cf5595532e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/easyFindDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/easyFindDB.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/insertDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/insertDB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,8 +55,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="543">
-              <caret line="78" column="78" lean-forward="true" selection-start-line="78" selection-start-column="78" selection-end-line="78" selection-end-column="78" />
+            <state relative-caret-position="-656">
+              <caret line="39" column="15" lean-forward="true" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -67,8 +67,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/insertDB.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="92" column="20" selection-start-line="92" selection-start-column="20" selection-end-line="92" selection-end-column="20" />
+            <state relative-caret-position="792">
+              <caret line="44" column="106" lean-forward="true" selection-start-line="44" selection-start-column="106" selection-end-line="44" selection-end-column="106" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -77,10 +77,35 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/index.html">
+        <entry file="das://21906f62-8b06-4bb4-b3a9-677fa301d06a/schema/main/table/oggetto">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state projectRestartId="59ad5c0a-3ea9-4165-8644-3db84ff5f399">
+              <filtering>
+                <filter text="" />
+              </filtering>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ApiUser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3090">
-              <caret line="206" column="74" selection-start-line="206" selection-start-column="74" selection-end-line="206" selection-end-column="74" />
+            <state relative-caret-position="255">
+              <caret line="99" column="12" selection-start-line="99" selection-start-column="12" selection-end-line="99" selection-end-column="51" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="das://21906f62-8b06-4bb4-b3a9-677fa301d06a/schema/main/table/prodotto">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state projectRestartId="59ad5c0a-3ea9-4165-8644-3db84ff5f399">
+              <filtering>
+                <filter text="" />
+              </filtering>
             </state>
           </provider>
         </entry>
@@ -88,8 +113,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="140" column="29" lean-forward="true" selection-start-line="140" selection-start-column="29" selection-end-line="140" selection-end-column="29" />
+            <state relative-caret-position="537">
+              <caret line="292" column="34" selection-start-line="292" selection-start-column="22" selection-end-line="292" selection-end-column="34" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -109,7 +137,11 @@
       <find>bottone</find>
       <find>accesso</find>
       <find>&lt;input type=&quot;text&quot; name=&quot;indirizzo&quot; placeholder=&quot;Indirizzo...&quot; class=&quot;form-control blocco&quot; id=&quot;indirizzo&quot; readonly=&quot;&quot; required=&quot;&quot; tabindex=&quot;-1&quot;&gt;</find>
+      <find>;</find>
     </findStrings>
+    <replaceStrings>
+      <replace>!important;</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -124,10 +156,12 @@
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/static/assets/js/map.js" />
         <option value="$PROJECT_DIR$/ApiUser.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
+        <option value="$PROJECT_DIR$/static/assets/css/ese" />
+        <option value="$PROJECT_DIR$/static/assets/css/style.css" />
+        <option value="$PROJECT_DIR$/insertDB.py" />
         <option value="$PROJECT_DIR$/templates/home.html" />
         <option value="$PROJECT_DIR$/app.py" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
-        <option value="$PROJECT_DIR$/insertDB.py" />
       </list>
     </option>
   </component>
@@ -150,6 +184,34 @@
             <path>
               <item name="easyFind" type="b2602c69:ProjectViewProjectNode" />
               <item name="easyFind" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="easyFind" type="b2602c69:ProjectViewProjectNode" />
+              <item name="easyFind" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="easyFind" type="b2602c69:ProjectViewProjectNode" />
+              <item name="easyFind" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="easyFind" type="b2602c69:ProjectViewProjectNode" />
+              <item name="easyFind" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="easyFind" type="b2602c69:ProjectViewProjectNode" />
+              <item name="easyFind" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="easyFind" type="b2602c69:ProjectViewProjectNode" />
+              <item name="easyFind" type="462c0819:PsiDirectoryNode" />
+              <item name="venv" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -247,6 +309,9 @@
       <workItem from="1560761606443" duration="3210000" />
       <workItem from="1560765646424" duration="73000" />
       <workItem from="1560765865880" duration="3136000" />
+      <workItem from="1560776269960" duration="76000" />
+      <workItem from="1560802001917" duration="2738000" />
+      <workItem from="1560844269171" duration="17374000" />
     </task>
     <task id="LOCAL-00001" summary="modifica db, form. campo indirizzo aggiunto">
       <created>1560423202754</created>
@@ -287,7 +352,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60128000" />
+    <option name="totallyTimeSpent" value="80316000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -301,13 +366,13 @@
   <component name="ToolWindowManager">
     <frame x="70" y="27" width="1850" height="1053" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2644124" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13691796" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Database Console" order="0" weight="0.32906976" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49893278" weight="0.3053435" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49893278" visible="true" weight="0.3053435" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -360,7 +425,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="aggiunta prodotti" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/easyFind$easyFind.coverage" NAME="easyFind Coverage Results" MODIFIED="1560768853085" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/easyFind$easyFind.coverage" NAME="easyFind Coverage Results" MODIFIED="1560864283436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/alchemy.py" />
@@ -422,27 +487,10 @@
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ecfffcec-7539-4d41-a959-7b3e7aeaa1f5/console.sql">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3090">
-          <caret line="206" column="74" selection-start-line="206" selection-start-column="74" selection-end-line="206" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/assets/js/map.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="56" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ApiUser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -462,15 +510,69 @@
           <Categories>
             <Category>Fields</Category>
           </Categories>
+          <SCOPE>All</SCOPE>
         </state>
       </provider>
     </entry>
     <entry file="das://21906f62-8b06-4bb4-b3a9-677fa301d06a/collation/BINARY">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="uml://DATABASE/21906f62-8b06-4bb4-b3a9-677fa301d06a">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>21906f62-8b06-4bb4-b3a9-677fa301d06a</OriginalElement>
+          <nodes>
+            <node x="369.0" y="0.0">21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.sqlite_master</node>
+            <node x="0.0" y="24.0">21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.prodotto</node>
+            <node x="195.0" y="0.0">21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.venditore</node>
+            <node x="104.0" y="221.0">21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.oggetto</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.oggetto" target="21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.venditore">
+              <point x="34.75" y="-73.5" />
+              <point x="208.25" y="196.0" />
+              <point x="259.5" y="196.0" />
+              <point x="0.0" y="85.5" />
+            </edge>
+            <edge source="21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.oggetto" target="21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.prodotto">
+              <point x="-34.75" y="-73.5" />
+              <point x="138.75" y="196.0" />
+              <point x="87.5" y="196.0" />
+              <point x="0.0" y="61.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.9248554913294798" x="249.5" y="188.0" />
+          <SelectedNodes>
+            <node>21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.sqlite_master</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="195" column="44" selection-start-line="195" selection-start-column="44" selection-end-line="195" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://21906f62-8b06-4bb4-b3a9-677fa301d06a/schema/main/table/venditore">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="59ad5c0a-3ea9-4165-8644-3db84ff5f399">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
     <entry file="das://21906f62-8b06-4bb4-b3a9-677fa301d06a/schema/main/table/sqlite_master">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="a24fe6d7-98e9-4024-a906-161a2d75f5d9">
+        <state projectRestartId="59ad5c0a-3ea9-4165-8644-3db84ff5f399">
           <filtering>
             <filter text="" />
           </filtering>
@@ -480,76 +582,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://21906f62-8b06-4bb4-b3a9-677fa301d06a/schema/main/table/prodotto">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="a24fe6d7-98e9-4024-a906-161a2d75f5d9">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://21906f62-8b06-4bb4-b3a9-677fa301d06a/schema/main/table/venditore">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="a24fe6d7-98e9-4024-a906-161a2d75f5d9">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://21906f62-8b06-4bb4-b3a9-677fa301d06a/schema/main/table/oggetto">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="a24fe6d7-98e9-4024-a906-161a2d75f5d9">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://DATABASE/21906f62-8b06-4bb4-b3a9-677fa301d06a">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>DATABASE</ID>
-          <OriginalElement>21906f62-8b06-4bb4-b3a9-677fa301d06a</OriginalElement>
-          <nodes>
-            <node x="" y="">21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.sqlite_master</node>
-            <node x="" y="">21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.oggetto</node>
-            <node x="" y="">21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.venditore</node>
-            <node x="" y="">21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.prodotto</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="902.0" y="432.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Key columns</Category>
-            <Category>Columns</Category>
-          </Categories>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/home.html">
+    <entry file="file://$PROJECT_DIR$/ApiUser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="140" column="29" lean-forward="true" selection-start-line="140" selection-start-column="29" selection-end-line="140" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/insertDB.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="92" column="20" selection-start-line="92" selection-start-column="20" selection-end-line="92" selection-end-column="20" />
+        <state relative-caret-position="255">
+          <caret line="99" column="12" selection-start-line="99" selection-start-column="12" selection-end-line="99" selection-end-column="51" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="das://21906f62-8b06-4bb4-b3a9-677fa301d06a/schema/main/table/oggetto">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="59ad5c0a-3ea9-4165-8644-3db84ff5f399">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://21906f62-8b06-4bb4-b3a9-677fa301d06a/schema/main/table/prodotto">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="59ad5c0a-3ea9-4165-8644-3db84ff5f399">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/assets/css/ese">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/assets/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="298" selection-start-line="298" selection-end-line="298" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/insertDB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="792">
+          <caret line="44" column="106" lean-forward="true" selection-start-line="44" selection-start-column="106" selection-end-line="44" selection-end-column="106" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="292" column="34" selection-start-line="292" selection-start-column="22" selection-end-line="292" selection-end-column="34" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="78" column="78" lean-forward="true" selection-start-line="78" selection-start-column="78" selection-end-line="78" selection-end-column="78" />
+        <state relative-caret-position="-656">
+          <caret line="39" column="15" lean-forward="true" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
           </folding>

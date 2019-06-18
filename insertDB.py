@@ -1,6 +1,7 @@
 import sqlalchemy as db
 from flask import render_template , redirect, url_for
 import app
+import json
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 def allowed_file(filename):
@@ -25,7 +26,23 @@ def home(nome):
     dizionario['nome_prod'] = lista
     print('lista: ' + str(lista))
     print('dizionario: ' + str(dizionario))
-    return render_template("home.html", message=dizionario)
+
+    oggetto = db.Table('oggetto', metadata, autoload=True, autoload_with=engine)
+
+    mieiProd = db.select([oggetto, prod])
+    mieiProd = mieiProd.select_from(oggetto.join(prod, oggetto.columns.id_prodotto == prod.columns.id))
+    mieiProd = mieiProd.where(oggetto.columns.nome_v == nome.upper() )
+
+    ris = connection.execute(mieiProd).fetchall()
+
+    prodMiei = json.dumps([dict(r) for r in ris])
+    print('PRODOTTIMIEI ' + prodMiei)
+
+    Qcategorie = db.select([prod.columns.categoria.distinct()])
+    categorie = connection.execute(Qcategorie).fetchall()
+
+    categoriePresenti = json.dumps([dict(r) for r in categorie])
+    return render_template("home.html", message=dizionario, risposta=prodMiei, category=categoriePresenti)
 
 
 def insert_prod(categoria,nome,n_img):
@@ -103,3 +120,32 @@ def insertOggetto(nomeProdotto, quantita, prezzo, nome):
 
     print('ho iserito!')
     return redirect("/Home_page")
+
+def modificaOggetto(mioProdotto, miaQuantita):
+    engine = db.create_engine('sqlite:///easyFindDB.db')
+    connection = engine.connect()
+    metadata = db.MetaData()
+
+    prodotto = db.Table('prodotto', metadata, autoload=True, autoload_with=engine)
+    oggetto = db.Table('oggetto', metadata, autoload=True, autoload_with=engine)
+
+    idogg = db.select([prodotto.columns.id]).where(prodotto.columns.nome_prodotto == mioProdotto.upper() )
+    risultato = connection.execute(idogg).fetchall()
+    idProd = risultato[0][0]
+
+    print('----mioProdotto ' + mioProdotto)
+    print('----miaQuantita ' + miaQuantita)
+    print(idProd)
+
+    if int(miaQuantita)>0:
+        modifica = db.update(oggetto).values(quantita = int(miaQuantita)).where(oggetto.columns.id_prodotto == idProd)
+        connection.execute(modifica)
+        print('ho modificato!')
+    else:
+        elimina = db.delete(oggetto).where(oggetto.columns.id_prodotto == idProd)
+        connection.execute(elimina)
+        print('ho eliminato!')
+
+
+    return redirect("/Home_page")
+

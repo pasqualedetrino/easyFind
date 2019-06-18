@@ -94,7 +94,7 @@ def get_post_javascript_data():
     jsdata = request.form['javascript_data']
     print('jsondata ' + jsdata)
 
-    return insertDB.home(jsdata)
+    #return insertDB.home(jsdata)
 
 # ---------------------------------------------------------------------------------------------------
 

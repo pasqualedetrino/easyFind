@@ -39,16 +39,10 @@
 
          <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
-    <!-- Load Leaflet from CDN-->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet/dist/leaflet-src.js"></script>
-
-    <!-- Load Esri Leaflet from CDN -->
-    <script src="https://unpkg.com/esri-leaflet"></script>
-
-    <!-- Esri Leaflet Geocoder -->
-    <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css">
-    <script src="https://unpkg.com/esri-leaflet-geocoder"></script>
+ 	<link rel="stylesheet" href="https://unpkg.com/leaflet@latest/dist/leaflet.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@latest/dist/Control.Geocoder.css">
+	<script src="https://unpkg.com/leaflet@latest/dist/leaflet-src.js"></script>
+	<script src="https://unpkg.com/leaflet-control-geocoder@latest/dist/Control.Geocoder.js"></script>
 
         <style>
             body {
@@ -212,6 +206,10 @@
 				                        	<label class="sr-only" for="form-about-yourself">Longitudine</label>
                                             <input title="Richiede posizione GPS" type="text" name="long" placeholder="Longitudine..." class="form-control blocco" id="long" readonly required tabindex="-1">
 				                        </div>
+                                                                                    <div id="gps"></div>
+                                            <div id="mappa"></div>
+
+                                                            <div id="map"></div>
 				                        <button type="submit" class="btn">Invia i tuoi dati!</button>
 				                    </form>
 			                    </div>
@@ -224,7 +222,6 @@
             </div>
 
         </div>
-                    <div id="map"></div>
         <!-- Footer -->
         <footer>
         	<div class="container">

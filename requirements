@@ -2,5 +2,7 @@ flask-restplus==1.1.1
 sqlalchemy
 geopy
 flask-uploads
-flask-dropzone
 pygeocoder
+flask_hashing
+flask_login
+

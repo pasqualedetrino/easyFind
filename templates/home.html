@@ -50,10 +50,7 @@
                                 <img src="static/assets/img/icona.svg" width="50px" style="margin-top: 9px">
                                 <h1><strong>Easy Find</strong></h1>
                             </div>
-                            <div>
-                            	<p>
-                                    Le tue esigenze nei tuoi dintorni
-                            	</p>
+                            <div id="nome_vend">
                             </div>
                         </div>
                     </div>
@@ -63,10 +60,11 @@
                             <div class="form-box">
 	                        	<div class="form-top">
 	                        		<div class="form-top-left">
-	                        			<h3>CATEGORIE</h3>
+	                        			<h3>PRODOTTI GIA ESISTENTI</h3>
+                                        <div id="scelta"></div>
 	                        		</div>
 	                            </div>
-                                <style>
+                                                                    <style>
                                 .dropbtn {
                                   background-color: #3498DB;
                                   color: white;
@@ -107,16 +105,7 @@
                                 .show {display: block;}
                                 </style>
 
-                                    <div class="form-bottom"  id="categorie"> </div>
-		                    </div>
-
-                            <div class="form-box">
-	                        	<div class="form-top">
-	                        		<div class="form-top-left">
-	                        			<h3>PRODOTTI GIA ESISTENTI</h3>
-	                        		</div>
-	                            </div>
-
+                                    <div class="form-bottom" style="border-radius: 0 0 0px 0px; display: flex;align-items: flex-start;justify-content: center; padding-bottom: 0px !important;" id="categorie"> </div>
                                     <div class="form-bottom"  id="lista_prodotti">
 			                        </div>
 		                    </div>
@@ -127,8 +116,8 @@
 	                        			<h3>I MIEI PRODOTTI</h3>
 	                        		</div>
 	                            </div>
-
-                                    <div class="form-bottom"  id="miei_prodotti">
+                                    <div id="noProdotti"></div>
+                                    <div id="miei_prodotti">
 			                        </div>
 		                    </div>
 
@@ -143,6 +132,7 @@
                         		<div class="form-top">
 	                        		<div class="form-top-left">
 	                        			<h3>REGISTRA PRODOTTO</h3>
+                                        <p>Se non trovi il prodotto che vuoi vendere nella sezione PRODOTTI GIA ESISTENTI, registralo adesso!</p>
 	                        		</div>
 	                            </div>
                                 <div class="form-bottom">
@@ -152,7 +142,6 @@
 				                        	<input type="categoria" name="categoria" placeholder="Categoria..." class="form-control" id="categoria" required>
 				                        </div>
 				                        <div class="form-group">
-                                            <input type="text" id="nome" name="nome" hidden>
 				                        	<label class="sr-only" for="Nome_prodotto">Nome prodotto</label>
 				                        	<input type="text" name="nome_prodotto" placeholder="Nome prodotto..." class="form-control" id="nome_prodotto" required>
                                             <br>
@@ -198,20 +187,20 @@
         <script type="text/javascript">
             var dati = {{ message|tojson }}
             var username=dati.nome
-            console.log('dati ' + dati)
+            console.log('dati ' + dati.cat_scelta)
             var html =""
             for(var d in dati.nome_prod)
             {
-                html += "<div style=\"display: flex;align-items: flex-start;justify-content: center;\">\n" +
+                html += "<div style=\" margin-top: 11px; padding: 11px;border-radius: 15px;align-items: flex-start;justify-content: center; background-color: rgba(228, 0, 255, 0.38);\">\n" +
                     " <form role=\"form\" action=\"insertOgg\" method=\"post\" class=\"registration-form\">" +
                     "      <div>\n" +
-                    "<input type=\"text\" name=\"articolo\" id=\"articolo\"  value  = "+dati.nome_prod[d] + " class=\"form-control blocco\" readonly required tabindex=\"-1\" >" +
+                    "<button class=\"dropbtn\" style=\"      border-top-left-radius: 10px;   border-top-right-radius: 10px; background-color: #3498DB !important;  width: 100%;\" type=\"button\" disabled >"+dati.nome_prod[d]+"</button> <input hidden type=\"text\" name=\"articolo\" id=\"articolo\" value  = '"+dati.nome_prod[d] + "' readonly required tabindex=\"-1\" >" +
 
                     "                                        </div>\n" +
-                    "                                        <div >\n" +
-                    "                                            <input type=\"number\" name = \"quantita\" placeholder=\"Quantit&agrave;\">\n" +
-                    "                                            <input type=\"number\" name = \"prezzo\" placeholder=\"Prezzo\">\n" +
-                    "                                            <button type=\"submit\" >Invia</button>\n" +
+                    "                                        <div>\n" +
+                    "<img style=\" width: 100%; height: auto; \" src=\"static/prodotti/"+dati.id[d]+"\"> <br><div style=\"margin-top: 10px; margin-bottom: 10px;\"> <a style=\"font-weight: 500; color: white;\">Quantit&agrave;: </a><input required style=\" margin-right: 20px; display:inline-block;  width: 100px;\n\" class=\"form-control\" type=\"number\" name = \"quantita\" placeholder=\"Quantit&agrave;\">\n" +
+                    "                                       <div style=\"margin-top: 10px; display:inline-block;\">  <a style=\"font-weight: 500; color: white;\">Prezzo: €</a> <input required style=\"  display:inline-block;  width: 100px;\n\" class=\"form-control\" type=\"number\" step=\"0.01\" name = \"prezzo\" placeholder=\"Prezzo\">\n" +
+                    "                              </div>       </div>       <button class=\"btn\" style=\"white-space: pre-wrap !important; height: auto;\" type=\"submit\" >Aggiungi ai prodotti in vendita</button>\n" +
                     "\n" +
                     "                                        </div> </form>\n" +
                     "                                    </div> "
@@ -219,8 +208,11 @@
 
 
             }
-	        document.getElementById("nome").value = username
-            document.getElementById('lista_prodotti').innerHTML = html
+            document.getElementById('nome_vend').innerHTML = "<p> Benvenuto<a style=\"font-weight: 500; color: white;\"> " + dati.nome + " </a></p>";
+            if(dati.cat_scelta !== null) {
+                document.getElementById('scelta').innerHTML = "<p>Categoria selezionata: " + dati.cat_scelta + "</p>";
+                document.getElementById('lista_prodotti').innerHTML = html
+            }
 
         </script>
 
@@ -229,24 +221,31 @@
             console.log('mProdotti ' + mProdotti)
             var q = JSON.parse(mProdotti)
             console.log('q ' + q)
-            var html2 =""
+            var html2 ="<div class=\"form-bottom\" >"
 
             for(var m in q)
             {
                 console.log('qui')
 
-                html2 += "<div style=\"display: flex;align-items: flex-start;justify-content: center;\">\n" +
+                html2 += "<div style=\" margin-top: 11px; padding: 11px;border-radius: 15px;align-items: flex-start;justify-content: center; background-color: #025a9f;\">\n" +
                         " <form role=\"form\" action=\"myOgg\" method=\"post\" class=\"registration-form\">" +
                     "      <div>\n" +
-                    "<input type=\"text\" name=\"mioArticolo\" id=\"mioArticolo\"  value  = "+q[m].nome_prodotto + " class=\"form-control blocco\" readonly required tabindex=\"-1\" >" +
-                    "<input type=\"number\" name = \"miaQuantita\" id=\"miaQuantita\"  value  = "+q[m].quantita + ">\n" +
-                    "<button type=\"submit\" >Invia</button>\n" +
+                    "<input hidden type=\"text\" name=\"mioId_ogg\" id=\"mioId_ogg\" value=\""+q[m].id_oggetto+"\"> <button class=\"dropbtn\" style=\"      border-top-left-radius: 10px;     border-style: solid !important;     border-color: #FFFFFF !important;\n  border-top-right-radius: 10px; background-color: #3498DB !important;  width: 100%;\" type=\"button\" disabled >"+q[m].nome_prodotto+"</button><input hidden type=\"text\" name=\"mioArticolo\" id=\"mioArticolo\" value  = '"+q[m].nome_prodotto + "' readonly required tabindex=\"-1\" >" +
+                                            "                                        </div>\n" +
+                    "                                        <div>\n" +
+                    "<img src=\"static/prodotti/"+q[m].nome_img+"\"> <br><div style=\"margin-top: 10px; margin-bottom: 10px;\"> <a style=\"white-space: nowrap; font-weight: 500; color: white;\"> Quantit&agrave;: </a><input required style=\" margin-right: 20px;   width: 100px;\" type=\"number\" name = \"miaQuantita\" id=\"miaQuantita\"  value  = "+q[m].quantita + ">\n" +
+                    "<a style=\"font-weight: 500; color: white;     white-space: nowrap;    \"> Prezzo: € "+q[m].prezzo+" </a>  </div> <button class=\"btn\"  style=\"white-space: pre-wrap !important; height: auto; border-style: solid !important; border-color: #FFFFFF !important;\" type=\"submit\" >Aggiorna prodotto</button>\n" +
                     "\n" +
-                    "                                        </div> </form>\n" +
-                    "                                    </div> "
+                    "                                        </form>\n" +
+                    "                                    </div> </div>"
 
             }
-            document.getElementById('miei_prodotti').innerHTML = html2
+            html2 += "</div>"
+            console.log("lengt di q: "+q.length)
+            if(q.length === 0)
+                document.getElementById('noProdotti').innerHTML = "<div class=\"form-bottom\"> <a style=\"font-weight: 500; color: white;\"> Attualmente non stai vendendo nessun prodotto</a></div>";
+            else
+                document.getElementById('miei_prodotti').innerHTML = html2
 
         </script>
 
@@ -257,17 +256,17 @@
             console.log('c ' + c)
             var html3 =""
 
-            html3 += "<div class=\"dropdown\">\n" +
-                        "  <button onclick=\"myFunction()\" class=\"dropbtn\">Dropdown</button>\n" +
+            html3 += "<div class=\"dropdown\" style=\"display: flex;align-items: flex-start;justify-content: center;\">\n" +
+                        "  <button onclick=\"myFunction()\" class=\"dropbtn\">Premi qui per scegliere la categoria</button>\n" +
                         "  <div id=\"myDropdown\" class=\"dropdown-content\">\n" +
-            " <form id=\"formcat\" role=\"form\" action=\"setCategoria\" method=\"post\" class=\"registration-form\">                                             <input type=\"text\" id=\"cat\" name=\"cat\" hidden>\n"
+            " <form id=\"formcat\" role=\"form\" action=\"setCategoria\" method=\"post\" class=\"registration-form\"> "+
+                " <input type=\"text\" id=\"cat\" name=\"cat\" hidden>\n";
             for(var i in c)
             {
                 html3 +=
                     " <a href=\"#\" id=\"categoriaScelta\" onclick=\"setCategoria('"+c[i].categoria+"')\">"+ c[i].categoria + "</a>\n"
 
             }
-            html3 +=  "</div>\n" + "</div>\n</form>"
 
         /* When the user clicks on the button,
         toggle between hiding and showing the dropdown content */

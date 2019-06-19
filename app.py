@@ -29,10 +29,16 @@ def load_user(user_id):
 class User(UserMixin):
   def __init__(self,id):
     self.id = id
+    self.prod = False
 
   def get_name(self):
         return self.id
 
+  def set_prod(self):
+        self.prod = True
+
+  def get_prod(self):
+        return self.prod
 
 if __name__ == '__main__':
     app.run()
@@ -65,7 +71,7 @@ def signIn():
 @login_required
 def Home_page():
     username = current_user.get_name()
-    return insertDB.home(username, None)
+    return insertDB.home(username, None, "unsuccessful")
 
 
 @app.route('/insertOgg', methods=['POST'])
@@ -96,7 +102,7 @@ def get_post_javascript_data():
     jsdata = request.form['cat']
     print('jsondata ' + jsdata)
     username = current_user.get_name()
-    return insertDB.home(username, jsdata)
+    return insertDB.home(username, jsdata, "unsuccessful")
 
 # ---------------------------------------------------------------------------------------------------
 
@@ -147,5 +153,20 @@ def upload_file():
       f = request.files['file']
       categoria= request.form.get('categoria')
       nome_prod = request.form.get('nome_prodotto')
-      insertDB.insert_prod(categoria,nome_prod,f)
-      return redirect('Home_page')
+      boolRis = insertDB.insert_prod(categoria,nome_prod,f)
+      if boolRis == True:
+          return  redirect('HomePage')
+      else:
+          return  redirect('Home-Page')
+
+@app.route('/HomePage')
+@login_required
+def HomePage():
+   username = current_user.get_name()
+   return insertDB.home(username, None, "success")
+
+@app.route('/Home-Page')
+@login_required
+def HomePag():
+   username = current_user.get_name()
+   return insertDB.home(username, None, "ridondante")

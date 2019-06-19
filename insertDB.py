@@ -9,7 +9,7 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-def home(nome, categoria):
+def home(nome, categoria, valore):
     engine = db.create_engine('sqlite:///easyFindDB.db')
     connection = engine.connect()
     metadata = db.MetaData()
@@ -49,7 +49,8 @@ def home(nome, categoria):
     categorie = connection.execute(Qcategorie).fetchall()
 
     categoriePresenti = json.dumps([dict(r) for r in categorie])
-    return render_template("home.html", message=dizionario, risposta=prodMiei, category=categoriePresenti)
+    print ("Registrazione Prod: "+ valore)
+    return render_template("home.html", message=dizionario, risposta=prodMiei, category=categoriePresenti, registerProd= valore)
 
 
 def insert_prod(categoria,nome,n_img):
@@ -57,6 +58,13 @@ def insert_prod(categoria,nome,n_img):
     connection = engine.connect()
     metadata = db.MetaData()
     prod = db.Table('prodotto', metadata, autoload=True, autoload_with=engine)
+
+    controllo = db.select([prod.columns.id]).where(db.and_(prod.columns.categoria == categoria.upper(), prod.columns.nome_prodotto == nome.upper()))
+    risControl = connection.execute(controllo).fetchall()
+    print("Risultato: "+ str(len(risControl)))
+    if len(risControl) == 1:
+        return False
+
     query = db.select([db.func.max(prod.columns.id)])
     ris = connection.execute(query).fetchall()
     maxIdProd = ris[0][0]
@@ -70,7 +78,7 @@ def insert_prod(categoria,nome,n_img):
         connection.execute(query2)
     else:
         print('File non concesso!')
-    return
+    return True
 
 def insert(nome, password, citta, indirizzo, lat, long):
     engine = db.create_engine('sqlite:///easyFindDB.db')

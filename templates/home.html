@@ -151,7 +151,7 @@
 	                                </form>
 			                    </div>
                         	</div>
-
+                            <div id="registrazioneProd"></div>
                         </div>
                     </div>
 
@@ -220,6 +220,13 @@
             var mProdotti = {{ risposta|tojson }}
             console.log('mProdotti ' + mProdotti)
             var q = JSON.parse(mProdotti)
+            var registrazioneProdotti = {{ registerProd|tojson }}
+            if(registrazioneProdotti === "success")
+                messaggio()
+
+            if(registrazioneProdotti === "ridondante")
+                messaggio2()
+
             console.log('q ' + q)
             var html2 ="<div class=\"form-bottom\" >"
 

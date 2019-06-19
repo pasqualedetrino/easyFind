@@ -4,3 +4,6 @@ geopy
 flask-uploads
 flask-dropzone
 pygeocoder
+flask_hashing
+flask_login
+

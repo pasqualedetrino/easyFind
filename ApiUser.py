@@ -1,8 +1,7 @@
 import sqlalchemy as db
 import json
 
-# trovare i venditori che vendono un dato prodotto in una data città
-# restituisce il venditore, il prezzo, la quantità, l'indirizzo, le coordinate del venditore
+
 
 def ProdottoComune(citta, nomeProdotto):
     engine = db.create_engine('sqlite:///easyFindDB.db')
@@ -25,8 +24,6 @@ def ProdottoComune(citta, nomeProdotto):
 from geopy.distance import geodesic
 
 
-# trovare i venditori entro un certo raggio dalla posizione dell'utente che vendono un dato prodotto
-# restituisce il venditore, il prezzo, la quantità, l'indirizzo, le coordinate del venditore
 
 def ProdottoComunePosizione(nomeProdotto, lat, long, raggio):
     engine = db.create_engine('sqlite:///easyFindDB.db')
@@ -56,8 +53,7 @@ def ProdottoComunePosizione(nomeProdotto, lat, long, raggio):
 
     return json.dumps([dict(r) for r in list])
 
-# trovare il venditore che vende un dato prodotto al miglior prezzo entro una certa posizione
-# restituisce il venditore, il prezzo, la quantità, l'indirizzo, le coordinate del venditore
+
 
 def ProdottoComunePosizionePrezzo(nomeProdotto, lat, long, raggio):
     engine = db.create_engine('sqlite:///easyFindDB.db')
@@ -88,7 +84,7 @@ def ProdottoComunePosizionePrezzo(nomeProdotto, lat, long, raggio):
     return json.dumps([dict(r) for r in list])
 
 
-# conoscere le categorie presenti nel sistema
+
 
 def CategoriePresenti():
     engine = db.create_engine('sqlite:///easyFindDB.db')
@@ -103,7 +99,7 @@ def CategoriePresenti():
 
     return json.dumps([dict(r) for r in result])
 
-# conoscere i prodotti di una specifica categoria
+
 
 def ProdottiCategoria(categoria):
     engine = db.create_engine('sqlite:///easyFindDB.db')

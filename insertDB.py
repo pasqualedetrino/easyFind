@@ -128,7 +128,7 @@ def insertOggetto(nomeProdotto, quantita, prezzo, nome):
     print('ho iserito!')
     return redirect("/Home_page")
 
-def modificaOggetto(mioProdotto, miaQuantita):
+def modificaOggetto(mioId_ogg, mioProdotto, miaQuantita):
     engine = db.create_engine('sqlite:///easyFindDB.db')
     connection = engine.connect()
     metadata = db.MetaData()
@@ -145,11 +145,11 @@ def modificaOggetto(mioProdotto, miaQuantita):
     print(idProd)
 
     if int(miaQuantita)>0:
-        modifica = db.update(oggetto).values(quantita = int(miaQuantita)).where(oggetto.columns.id_prodotto == idProd)
+        modifica = db.update(oggetto).values(quantita = int(miaQuantita)).where(db.and_(oggetto.columns.id_prodotto == idProd, oggetto.columns.id_oggetto == mioId_ogg))
         connection.execute(modifica)
         print('ho modificato!')
     else:
-        elimina = db.delete(oggetto).where(oggetto.columns.id_prodotto == idProd)
+        elimina = db.delete(oggetto).where(db.and_(oggetto.columns.id_prodotto == idProd, oggetto.columns.id_oggetto == mioId_ogg))
         connection.execute(elimina)
         print('ho eliminato!')
 

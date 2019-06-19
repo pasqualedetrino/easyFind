@@ -82,11 +82,13 @@ def insertOgg():
 @login_required
 def myOgg():
     if request.method == 'POST':
+        mioIdOgg = request.form.get('mioId_ogg')
         mioArticolo = request.form.get('mioArticolo')
         miaQuantita = request.form.get('miaQuantita')
+        print('mioIdOgg ' + mioIdOgg)
         print('mioArticolo ' + mioArticolo)
         print('miaQuantita ' + miaQuantita)
-        return (insertDB.modificaOggetto(mioArticolo, miaQuantita) )
+        return (insertDB.modificaOggetto(mioIdOgg, mioArticolo, miaQuantita) )
 
 @app.route('/setCategoria', methods=['POST'])
 @login_required
@@ -140,6 +142,7 @@ def logout():
 @app.route('/uploader', methods = ['GET', 'POST'])
 @login_required
 def upload_file():
+   print("ook");
    if request.method == 'POST':
       f = request.files['file']
       categoria= request.form.get('categoria')

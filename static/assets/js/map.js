@@ -22,6 +22,7 @@ function onLocationFound(e) {
     risultato.clearLayers();
     geocodeService.reverse(e.latlng, map.options.crs.scale(16),function(result){
 	    gpsResult=result[0];
+	    console.log(gpsResult)
         if(gpsResult.properties.address.road !== undefined || gpsResult.properties.address.pedestrian !==  undefined) {
             risultato.addLayer(L.marker([gpsResult.properties.lat, gpsResult.properties.lon]).addTo(map).bindPopup(gpsResult.html).openPopup());
             risultato.addLayer(L.circle([gpsResult.properties.lat, gpsResult.properties.lon], radius).addTo(map));
@@ -29,7 +30,7 @@ function onLocationFound(e) {
              if (gpsResult.properties.address.postcode !== undefined)
                  ind += ", " + gpsResult.properties.address.postcode;
             document.getElementById("indirizzo").value = ind;
-            document.getElementById("Citta").value = gpsResult.properties.address.city;
+            document.getElementById("Citta").value = (gpsResult.properties.address.city || gpsResult.properties.address.town);
             document.getElementById("lat").value = gpsResult.properties.lat;
             document.getElementById("long").value = gpsResult.properties.lon;
             flag = true;
@@ -75,7 +76,8 @@ function sleep(milliseconds) {
 
 
 function onLocationError(e) {
-    e.message = "Impossibile usufruire del servizio senza attivare la posizione GPS!"
+    e.message = "Impossibile usufruire del servizio GPS!"
+    document.getElementById("usaMappa").innerHTML = "GPS disabilitato, indicare la propria attività sulla mappa per completare la registrazione:";
     alert(e.message);
 }
 

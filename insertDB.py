@@ -64,7 +64,7 @@ def insert_prod(categoria,nome,n_img):
         nome_im = app.secure_filename(str(int(maxIdProd) + 1)+'.'+n_img.filename.rsplit('.', 1)[1].lower())
         path_img=app.os.path.join(app.app.config['UPLOAD_FOLDER'], nome_im)
         n_img.save(path_img)
-        query2 = db.insert(prod).values(id=int(maxIdProd) + 1, categoria=categoria, nome_prodotto=nome.upper(), nome_img=nome_im)
+        query2 = db.insert(prod).values(id=int(maxIdProd) + 1, categoria=categoria.upper(), nome_prodotto=nome.upper(), nome_img=nome_im)
         connection.execute(query2)
     else:
         print('File non concesso!')

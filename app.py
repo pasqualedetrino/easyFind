@@ -13,10 +13,6 @@ app.config['HASHING_METHOD'] = 'sha384'
 hashing = Hashing(app)
 hashing.init_app(app)
 
-
-
-
-
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = ''
@@ -42,7 +38,7 @@ def main():
     return render_template('index.html', error = {'value' : 'false'})
 
 
-@app.route('/signUp', methods=['POST'])
+@app.route('/signUp', methods=('GET', 'POST'))
 def signUp():
     if request.method == 'POST':
         name = request.form.get('nome')
@@ -53,7 +49,7 @@ def signUp():
         long = float(request.form.get('long'))
         return (insertDB.insert(name, password, citta, indirizzo, lat, long))
 
-@app.route('/signIn', methods=['POST'])
+@app.route('/signIn', methods=('GET', 'POST'))
 def signIn():
     if request.method == 'POST':
         name = request.form.get('form-username')
@@ -68,7 +64,7 @@ def Home_page():
     return insertDB.home(username, None, "unsuccessful")
 
 
-@app.route('/insertOgg', methods=['POST'])
+@app.route('/insertOgg', methods=('GET', 'POST'))
 @login_required
 def insertOgg():
     if request.method == 'POST':
@@ -78,7 +74,7 @@ def insertOgg():
         nome = current_user.get_name()
         return (insertDB.insertOggetto(nomeProdotto, quantita, prezzo, nome) )
 
-@app.route('/myOgg', methods=['POST'])
+@app.route('/myOgg', methods=('GET', 'POST') )
 @login_required
 def myOgg():
     if request.method == 'POST':
@@ -90,7 +86,7 @@ def myOgg():
         print('miaQuantita ' + miaQuantita)
         return (insertDB.modificaOggetto(mioIdOgg, mioArticolo, miaQuantita) )
 
-@app.route('/setCategoria', methods=['POST'])
+@app.route('/setCategoria', methods=('GET', 'POST'))
 @login_required
 def get_post_javascript_data():
     jsdata = request.form['cat']
@@ -143,7 +139,7 @@ def indexOut():
     return render_template('index.html', error = {'value' : 'disconnect'})
 
 
-@app.route('/uploader', methods = ['GET', 'POST'])
+@app.route('/uploader', methods=('GET', 'POST'))
 @login_required
 def upload_file():
    print("ook");

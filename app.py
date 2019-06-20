@@ -29,16 +29,10 @@ def load_user(user_id):
 class User(UserMixin):
   def __init__(self,id):
     self.id = id
-    self.prod = False
 
   def get_name(self):
         return self.id
 
-  def set_prod(self):
-        self.prod = True
-
-  def get_prod(self):
-        return self.prod
 
 if __name__ == '__main__':
     app.run()
@@ -142,6 +136,10 @@ class prodotticategoria(Resource):
 @login_required
 def logout():
     logout_user()
+    return  redirect('/indexOut')
+
+@app.route('/indexOut')
+def indexOut():
     return render_template('index.html', error = {'value' : 'disconnect'})
 
 

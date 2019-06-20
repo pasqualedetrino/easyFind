@@ -96,6 +96,8 @@ function onmap()
             document.getElementById("Citta").value = mapResult.properties.address.city;
             document.getElementById("lat").value = mapResult.properties.lat;
             document.getElementById("long").value = mapResult.properties.lon;
+            risultato.clearLayers();
+            risultato.addLayer(L.marker([mapResult.properties.lat, mapResult.properties.lon]).addTo(map).bindPopup(mapResult.html).openPopup());
 }
 
 
@@ -108,5 +110,8 @@ function ongps()
             document.getElementById("Citta").value = gpsResult.properties.address.city;
             document.getElementById("lat").value = gpsResult.properties.lat;
             document.getElementById("long").value = gpsResult.properties.lon;
+            risultato.clearLayers();
+            risultato.addLayer(L.marker([gpsResult.properties.lat, gpsResult.properties.lon]).addTo(map).bindPopup(gpsResult.html).openPopup());
+            risultato.addLayer(L.circle([gpsResult.properties.lat, gpsResult.properties.lon], radius).addTo(map));
 }
 

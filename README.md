@@ -25,5 +25,5 @@ export FLASK_APP=app.py
 FLASK_ENV=development
 ```
 <h4>Presentation</h4>
-<a href https://github.com/pasqualedetrino/easyFind/Presentazione_progetto_completo-%5BBevilacqua-De_Trino%5D.pdf>
+<a href="Presentazione_progetto_completo-[Bevilacqua-De_Trino].pdf">
 Presentation </a>

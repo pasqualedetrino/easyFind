@@ -121,6 +121,7 @@ class categorie(Resource):
     def get(self):
         return ApiUser.CategoriePresenti()
 
+
 @api.route('/api/prodotticategoria/<categoria>')
 class prodotticategoria(Resource):
     def get(self, categoria):

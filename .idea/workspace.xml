@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c40aa9a-fe2e-424e-878b-742e7ba32b87" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/prodotti/18.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApiUser.py" beforeDir="false" afterPath="$PROJECT_DIR$/ApiUser.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/easyFindDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/easyFindDB.db" afterDir="false" />
     </list>
@@ -63,8 +63,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3315">
-              <caret line="221" column="28" selection-start-line="221" selection-start-column="28" selection-end-line="221" selection-end-column="28" />
+            <state relative-caret-position="3330">
+              <caret line="222" column="65" selection-start-line="222" selection-start-column="65" selection-end-line="222" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -81,8 +81,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/insertDB.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="24" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="24" />
+            <state relative-caret-position="345">
+              <caret line="29" column="35" lean-forward="true" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -91,13 +91,97 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ApiUser.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="96" column="30" lean-forward="true" selection-start-line="96" selection-start-column="30" selection-end-line="96" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" selection-start-line="15" selection-end-line="16" />
+            <state relative-caret-position="282">
+              <caret line="113" column="12" lean-forward="true" selection-start-line="113" selection-start-column="12" selection-end-line="113" selection-end-column="78" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="uml://DATABASE/21906f62-8b06-4bb4-b3a9-677fa301d06a">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>DATABASE</ID>
+              <OriginalElement>21906f62-8b06-4bb4-b3a9-677fa301d06a</OriginalElement>
+              <nodes>
+                <node x="369.0" y="0.0">21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.sqlite_master</node>
+                <node x="0.0" y="24.0">21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.prodotto</node>
+                <node x="195.0" y="0.0">21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.venditore</node>
+                <node x="104.0" y="221.0">21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.oggetto</node>
+              </nodes>
+              <notes />
+              <edges>
+                <edge source="21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.oggetto" target="21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.prodotto">
+                  <point x="-34.75" y="-73.5" />
+                  <point x="138.75" y="196.0" />
+                  <point x="87.5" y="196.0" />
+                  <point x="0.0" y="61.5" />
+                </edge>
+                <edge source="21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.oggetto" target="21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.venditore">
+                  <point x="34.75" y="-73.5" />
+                  <point x="208.25" y="196.0" />
+                  <point x="259.5" y="196.0" />
+                  <point x="0.0" y="85.5" />
+                </edge>
+              </edges>
+              <settings layout="Hierarchic Group" zoom="1.0" x="-115.5" y="141.0" />
+              <SelectedNodes>
+                <node>21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.sqlite_master</node>
+              </SelectedNodes>
+              <Categories>
+                <Category>Key columns</Category>
+                <Category>Columns</Category>
+              </Categories>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="das://21906f62-8b06-4bb4-b3a9-677fa301d06a/schema/main/table/venditore">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state projectRestartId="162f582a-a98d-4427-bf45-bb039056de78">
+              <filtering>
+                <filter text="" />
+              </filtering>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="das://21906f62-8b06-4bb4-b3a9-677fa301d06a/schema/main/table/prodotto">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state projectRestartId="162f582a-a98d-4427-bf45-bb039056de78">
+              <filtering>
+                <filter text="" />
+              </filtering>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="das://21906f62-8b06-4bb4-b3a9-677fa301d06a/schema/main/table/oggetto">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state projectRestartId="162f582a-a98d-4427-bf45-bb039056de78">
+              <filtering>
+                <filter text="" />
+              </filtering>
             </state>
           </provider>
         </entry>
@@ -112,6 +196,9 @@
       <find>categori</find>
       <find>current</find>
       <find>.home</find>
+      <find>un</find>
+      <find>unique</find>
+      <find>disti</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -129,6 +216,7 @@
         <option value="$PROJECT_DIR$/templates/home.html" />
         <option value="$PROJECT_DIR$/static/assets/js/map.js" />
         <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/ApiUser.py" />
       </list>
     </option>
   </component>
@@ -228,7 +316,15 @@
       <workItem from="1560974096609" duration="5043000" />
       <workItem from="1561014940664" duration="4063000" />
       <workItem from="1561023298557" duration="925000" />
-      <workItem from="1561035945955" duration="1932000" />
+      <workItem from="1561035945955" duration="1995000" />
+      <workItem from="1561111071656" duration="862000" />
+      <workItem from="1561133889338" duration="6000" />
+      <workItem from="1561283578205" duration="710000" />
+      <workItem from="1562676974331" duration="7795000" />
+      <workItem from="1562745530109" duration="2036000" />
+      <workItem from="1562750984029" duration="2211000" />
+      <workItem from="1562764249943" duration="2015000" />
+      <workItem from="1562933496161" duration="7955000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1560901804642</created>
@@ -279,16 +375,32 @@
       <option name="project" value="LOCAL" />
       <updated>1561023592315</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="controlli accessi">
+      <created>1561038355890</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1561038355890</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25630000" />
+    <option name="totallyTimeSpent" value="49283000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="70" y="27" width="1850" height="1053" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26662973" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18625277" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Database Console" order="0" weight="0.32906976" />
@@ -298,11 +410,11 @@
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="TODO" order="7" weight="0.3293348" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32906976" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32824427" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49893278" visible="true" weight="0.32824427" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49893278" weight="0.32497275" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50213444" side_tool="true" weight="0.32906976" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -344,22 +456,14 @@
     <MESSAGE value="Buono" />
     <MESSAGE value="Buono 2" />
     <MESSAGE value="aggiunta presentazione" />
-    <option name="LAST_COMMIT_MESSAGE" value="aggiunta presentazione" />
+    <MESSAGE value="controlli accessi" />
+    <MESSAGE value="modifiche api" />
+    <option name="LAST_COMMIT_MESSAGE" value="modifiche api" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/easyFind$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1561038055659" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/easyFind$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1562934747300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ApiUser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="31" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/assets/css/form-elements.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -424,60 +528,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="uml://DATABASE/21906f62-8b06-4bb4-b3a9-677fa301d06a">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>DATABASE</ID>
-          <OriginalElement>21906f62-8b06-4bb4-b3a9-677fa301d06a</OriginalElement>
-          <nodes>
-            <node x="" y="">21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.sqlite_master</node>
-            <node x="" y="">21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.prodotto</node>
-            <node x="" y="">21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.venditore</node>
-            <node x="" y="">21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.oggetto</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="559.0" y="184.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Key columns</Category>
-            <Category>Columns</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://21906f62-8b06-4bb4-b3a9-677fa301d06a/schema/main/table/venditore">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="bccb6547-b46b-4c92-a62b-8e77c30fe36a">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://21906f62-8b06-4bb4-b3a9-677fa301d06a/schema/main/table/oggetto">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="bccb6547-b46b-4c92-a62b-8e77c30fe36a">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://21906f62-8b06-4bb4-b3a9-677fa301d06a/schema/main/table/prodotto">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="afbc73c1-c9df-42bb-990d-445ab810e614">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3315">
-          <caret line="221" column="28" selection-start-line="221" selection-start-column="28" selection-end-line="221" selection-end-column="28" />
+        <state relative-caret-position="3330">
+          <caret line="222" column="65" selection-start-line="222" selection-start-column="65" selection-end-line="222" selection-end-column="65" />
         </state>
       </provider>
     </entry>
@@ -490,20 +544,101 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/insertDB.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="24" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="24" />
+        <state relative-caret-position="345">
+          <caret line="29" column="35" lean-forward="true" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="uml://DATABASE/21906f62-8b06-4bb4-b3a9-677fa301d06a">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>21906f62-8b06-4bb4-b3a9-677fa301d06a</OriginalElement>
+          <nodes>
+            <node x="369.0" y="0.0">21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.sqlite_master</node>
+            <node x="0.0" y="24.0">21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.prodotto</node>
+            <node x="195.0" y="0.0">21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.venditore</node>
+            <node x="104.0" y="221.0">21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.oggetto</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.oggetto" target="21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.prodotto">
+              <point x="-34.75" y="-73.5" />
+              <point x="138.75" y="196.0" />
+              <point x="87.5" y="196.0" />
+              <point x="0.0" y="61.5" />
+            </edge>
+            <edge source="21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.oggetto" target="21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.venditore">
+              <point x="34.75" y="-73.5" />
+              <point x="208.25" y="196.0" />
+              <point x="259.5" y="196.0" />
+              <point x="0.0" y="85.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="1.0" x="-115.5" y="141.0" />
+          <SelectedNodes>
+            <node>21906f62-8b06-4bb4-b3a9-677fa301d06a.TABLE:main.sqlite_master</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" selection-start-line="15" selection-end-line="16" />
+        <state relative-caret-position="282">
+          <caret line="113" column="12" lean-forward="true" selection-start-line="113" selection-start-column="12" selection-end-line="113" selection-end-column="78" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python2.7/site-packages/flask_restplus/resource.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://21906f62-8b06-4bb4-b3a9-677fa301d06a/schema/main/table/prodotto">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="162f582a-a98d-4427-bf45-bb039056de78">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://21906f62-8b06-4bb4-b3a9-677fa301d06a/schema/main/table/oggetto">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="162f582a-a98d-4427-bf45-bb039056de78">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://21906f62-8b06-4bb4-b3a9-677fa301d06a/schema/main/table/venditore">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="162f582a-a98d-4427-bf45-bb039056de78">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ApiUser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="96" column="30" lean-forward="true" selection-start-line="96" selection-start-column="30" selection-end-line="96" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>

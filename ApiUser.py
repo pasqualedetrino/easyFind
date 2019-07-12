@@ -1,6 +1,6 @@
 import sqlalchemy as db
 import json
-
+import sys
 
 
 def ProdottoComune(citta, nomeProdotto):
@@ -17,9 +17,18 @@ def ProdottoComune(citta, nomeProdotto):
     query = query.where(db.and_(venditore.columns.citta == citta, prodotto.columns.nome_prodotto == nomeProdotto) )
     result = connection.execute(query).fetchall()
 
-    print(result)
+    dizionario = {'item': []}
+    lista = []
 
-    return json.dumps([dict(r) for r in result])
+    i = 0
+    for var in result:
+        elem = {"nome_v": var[2], "prezzo": var[0], "indirizzo": var[5], "quantita": var[1]}
+        lista.insert(i, elem)
+
+        i = i + 1
+    dizionario['item'] = lista
+
+    return dizionario
 
 from geopy.distance import geodesic
 
@@ -64,27 +73,30 @@ def ProdottoComunePosizionePrezzo(nomeProdotto, lat, long, raggio):
     prodotto = db.Table('prodotto', metadata, autoload=True, autoload_with=engine)
     oggetto = db.Table('oggetto', metadata, autoload=True, autoload_with=engine)
 
-    query = db.select([db.func.min(oggetto.columns.prezzo), oggetto.columns.quantita, oggetto.columns.nome_v, venditore.columns.lat, venditore.columns.long, venditore.columns.indirizzo ])
+    query = db.select([oggetto.columns.prezzo, oggetto.columns.quantita, oggetto.columns.nome_v, venditore.columns.lat, venditore.columns.long, venditore.columns.indirizzo ])
     query = query.select_from(prodotto.join(oggetto.join(venditore, oggetto.columns.nome_v == venditore.columns.nome),oggetto.columns.id_prodotto == prodotto.columns.id))
     query = query.where(prodotto.columns.nome_prodotto == nomeProdotto)
     result = connection.execute(query).fetchall()
 
     posCliente = (lat, long)
-    list = []
 
+    dizionario = {'item': []}
+    lista = []
+
+    i = 0
     for var in result:
         negozio = (var[3], var[4])
 
         dist = geodesic(posCliente, negozio).kilometers
 
         if dist < int(raggio):
-            print(dist)
-            list.append(var)
+            elem = {"nome_v": var[2], "prezzo": var[0], "indirizzo": var[5], "quantita": var[1]}
+            lista.insert(i, elem)
+            i = i + 1
 
-    return json.dumps([dict(r) for r in list])
+    dizionario['item'] = lista
 
-
-
+    return dizionario
 
 def CategoriePresenti():
     engine = db.create_engine('sqlite:///easyFindDB.db')
@@ -93,11 +105,23 @@ def CategoriePresenti():
 
     prodotto = db.Table('prodotto', metadata, autoload=True, autoload_with=engine)
 
-    query = db.select([prodotto.columns.categoria])
+    query = db.select([prodotto.columns.categoria.distinct()])
 
     result = connection.execute(query).fetchall()
 
-    return json.dumps([dict(r) for r in result])
+    dizionario = {'item': [] }
+    lista = []
+
+
+    i = 0
+    for var in result:
+        elem = {"categoria": var[0]}
+        lista.insert(i, elem)
+
+        i = i + 1
+    dizionario['item'] = lista
+
+    return dizionario
 
 
 
@@ -113,4 +137,16 @@ def ProdottiCategoria(categoria):
 
     result = connection.execute(query).fetchall()
 
-    return json.dumps([dict(r) for r in result])
+    dizionario = {'item': [] }
+    lista = []
+
+
+    i = 0
+    for var in result:
+        elem = {"nome_prodotto": var[0]}
+        lista.insert(i, elem)
+
+        i = i + 1
+    dizionario['item'] = lista
+
+    return dizionario
